@@ -1,0 +1,30 @@
+% ==========================================
+% BAB VII PENUTUP
+% ==========================================
+\cleardoublepage
+\chapter{PENUTUP}
+\label{chap:penutup}
+
+% ==========================================
+\section{Kesimpulan}
+
+Berdasarkan hasil perancangan, implementasi, dan evaluasi yang telah dilaksanakan, tugas akhir ini menghasilkan dua simpulan utama yang secara langsung menjawab tujuan penelitian yang ditetapkan.
+
+Modul rekomendasi \emph{People-to-Project} berhasil dikembangkan sebagai bagian dari aplikasi kolaborasi mahasiswa, mencakup fitur pengelolaan profil kolaboratif, \emph{feed} rekomendasi berbasis skor kecocokan, halaman detail kegiatan, alur pendaftaran, pembuatan kegiatan, dan pengelolaan pendaftar. Pengujian \emph{black-box} terhadap 20 skenario mencatat 18 Berhasil dan 2 Berhasil dengan Catatan tanpa satu pun kegagalan. UAT terhadap 8 aspek fitur utama menunjukkan seluruh aspek berada pada kategori Diterima (75\%) atau Sangat Diterima (25\%). Skor SUS sebesar 61,25 dari 100 dengan interpretasi \emph{marginal low} menunjukkan sistem telah memenuhi kegunaan dasar, meskipun masih terdapat ruang perbaikan pada kejelasan penyajian informasi dan konsistensi antarmuka.
+
+Mekanisme \emph{Affinity-Based Matching} berhasil dikembangkan dalam wujud \emph{AffinityEngine}, yaitu algoritma pencocokan berbasis \emph{knowledge-based recommender system} yang mengoperasikan dua sub-algoritma paralel: Algoritma~1 berbasis \emph{Demands-Abilities Fit} untuk kecocokan kemampuan (\emph{skill} dan pengalaman), dan Algoritma~2 berbasis \emph{Needs-Supplies Fit} untuk kecocokan kebutuhan psikologis (minat, gaya kerja, dan preferensi peran). Bobot atribut diturunkan dari data survei menggunakan metode \emph{Rank Order Centroid} (ROC), dan hasil pencocokan disajikan melalui \emph{badge} warna, \emph{breakdown} kontribusi atribut, serta \emph{threshold} 30\%. Evaluasi algoritma terhadap 14 skenario menghasilkan seluruhnya Berhasil dengan nilai keluaran sistem yang sama persis dengan perhitungan manual.
+
+% ==========================================
+\section{Saran}
+
+Berdasarkan temuan evaluasi dan keterbatasan yang diidentifikasi selama pengerjaan tugas akhir ini, terdapat beberapa saran untuk pengembangan sistem ke depan.
+
+Temuan kualitatif SUS menunjukkan bahwa hambatan utama bukan berasal dari kegagalan fungsi, melainkan dari beban kognitif saat memahami alasan suatu kecocokan ditampilkan serta ketidakseimbangan kepadatan informasi antara beberapa halaman. Pengembangan lanjutan sebaiknya memprioritaskan penyempurnaan antarmuka \emph{breakdown} kontribusi atribut agar dapat dikomunikasikan lebih intuitif, misalnya melalui label deskriptif yang lebih jelas atau narasi ringkas yang menjelaskan faktor dominan kecocokan.
+
+Atribut \emph{AffinityEngine} saat ini diturunkan dari survei deskriptif dengan 86 responden. Penelitian lanjutan dapat memperluas cakupan atribut, misalnya dengan menambahkan dimensi kepribadian yang terstandar, serta melakukan validasi empiris terhadap bobot ROC menggunakan data pengguna aktual yang lebih besar atau membandingkannya dengan bobot yang dielisitasi langsung melalui instrumen formal.
+
+Sistem saat ini mengandalkan tag kategorikal yang diisi secara manual oleh pembuat kegiatan sehingga relevansi rekomendasi dapat menurun ketika jumlah kegiatan masih sedikit atau tag tidak representatif. Pengembangan lanjutan dapat mengeksplorasi ekstraksi tag otomatis dari deskripsi kegiatan menggunakan pemrosesan bahasa alami, atau pendekatan \emph{collaborative filtering} berbasis riwayat pendaftaran sebagai mekanisme pelengkap untuk mengatasi masalah \emph{cold start} pada data kegiatan.
+
+Evaluasi eksternal dalam penelitian ini melibatkan 10 responden. Pengujian lanjutan dengan sampel yang lebih besar dan beragam, mencakup mahasiswa dari berbagai angkatan dan program studi, akan memberikan gambaran yang lebih akurat tentang kemudahan penggunaan dan penerimaan sistem di kalangan pengguna nyata.
+
+Pengembangan lanjutan dapat mengeksplorasi sinergi yang lebih dalam antarmodul \emph{People-to-Project}, \emph{People-to-People}, dan \emph{Team Formation}, misalnya dengan menyatukan profil kolaboratif sebagai masukan bersama ketiga modul atau mengintegrasikan riwayat kolaborasi sebagai sinyal tambahan pada modul \emph{Team Formation}.

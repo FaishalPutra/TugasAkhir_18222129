@@ -1,0 +1,386 @@
+﻿\cleardoublepage
+\chapter{ANALISIS MASALAH}
+\label{chap:analisis-masalah}
+
+\iffalse
+% ============================================================================================
+% BAB III ANALISIS MASALAH
+% Pembagian subbab tidak rigid dan dapat bervariasi. Bab ini minimal berisi analisis kebutuhan
+% fungsional dan nonfungsional, analisis berbagai alternatif solusi yang dapat ditawarkan, dan
+% metode pemilihan solusi yang diusulkan.
+% ============================================================================================
+Bab ini membahas analisis masalah yang ada pada sistem saat ini, analisis kebutuhan yang diperlukan
+untuk menyelesaikan masalah tersebut, serta analisis pemilihan solusi yang diusulkan. Secara garis besar,
+bab ini membahas hal-hal berikut:
+\begin{enumerate}[1.]
+    \item Deskripsi hasil analisis dari persoalan yang sedang ditangani dalam TA;
+    \item Penjelasan tentang solusi yang ditawarkan (dapat berupa algoritma, konsep desain, formula, atau gabungannya)
+    pada level konsep dan detail yang cukup untuk merealisasikan solusinya; dan
+    \item Penjelasan tentang pendekatan yang dipilih dalam menyelesaikan persoalan TA.
+\end{enumerate}
+Subbab-subbab dalam bab ini dapat disesuaikan dengan kebutuhan topik TA yang dibahas. Berikut adalah contoh pembagian subbab
+yang dapat digunakan sebagai referensi (judul subbab dapat diubah sesuai dengan hal yang hendak dibahas dalam subbab tersebut).
+
+\section{Analisis Kondisi Saat Ini}
+Menurut \textcite{laudon2020}, gambarkan terlebih dahulu model konseptual sistem yang ada saat ini. Model konseptual ini berisi berbagai komponen atau subsitem dan interaksi antarsubsistem tersebut. Setelah itu, berikan penjelasan tentang masalah yang ada pada sistem tersebut. Paragraf berikut berisi contoh penjabaran masalah sistem informasi fasilitas kesehatan untuk pasien \autocite{pressman2019}.
+\section{Analisis Kebutuhan}
+\lipsum[4]
+\subsection{Identifikasi Masalah Pengguna}
+\lipsum[5]
+\subsection{Kebutuhan Fungsional}
+\lipsum[6]
+\subsection{Kebutuhan Nonfungsional}
+\lipsum[7]
+
+\section{Analisis Pemilihan Solusi}
+\subsection{Alternatif Solusi}
+\lipsum[8]
+\subsection{Analisis Penentuan Solusi}
+\lipsum[9]
+\fi
+
+% ============================================================
+% KONTEN BAB III
+% ============================================================
+
+\section{Analisis Kondisi Saat Ini}
+
+Dalam pengembangan sistem rekomendasi yang relevan dan berorientasi pada pengguna, penting untuk memahami terlebih dahulu kondisi nyata yang dialami oleh mahasiswa dalam proses pencarian kegiatan kolaboratif. Untuk memperoleh gambaran yang lebih objektif dan tidak hanya bergantung pada asumsi, dilakukan survei kepada mahasiswa dari berbagai perguruan tinggi. Survei ini bertujuan memetakan bagaimana mahasiswa saat ini menemukan informasi proyek, frekuensi keterlibatan mereka dalam kegiatan kolaboratif, serta tingkat kesulitan yang mereka hadapi dalam memilih kegiatan yang sesuai dengan minat dan kemampuan mereka.
+
+Langkah pertama dalam memahami kondisi saat ini adalah melihat sejauh mana mahasiswa benar-benar terlibat dalam kegiatan kolaboratif. Berdasarkan survei terhadap 86 responden, 2,3\% responden memilih skala 1, 9,3\% responden memilih skala 2, 14\% responden memilih skala 3, 47,7\% responden memilih skala 4, dan 26,7\% responden memilih skala 5. Temuan ini menunjukkan bahwa mayoritas mahasiswa (74,4\%) cukup aktif terlibat dalam kegiatan kolaboratif (skala 4 dan 5), yang mengindikasikan besarnya kebutuhan akan platform yang dapat mendukung pencarian dan pencocokan kegiatan kolaboratif secara lebih efisien.
+
+Setelah memahami tingkat partisipasi, analisis berikutnya berfokus pada bagaimana mahasiswa menemukan informasi mengenai proyek atau kegiatan kolaboratif. Berdasarkan survei, 59,3\% dari total responden mengandalkan teman atau kenalan, 54,7\% responden menggunakan media sosial, dan 43\% melalui grup percakapan seperti WhatsApp dan Line. Sebanyak 36\% mendapat informasi dari dosen, sedangkan hanya 12,8\% yang menggunakan platform khusus. Kondisi ini menandakan bahwa mahasiswa masih sangat bergantung pada kanal informal dalam menemukan informasi kegiatan kolaboratif, dan belum memiliki akses ke sistem informasi terpusat yang memfasilitasi pencarian proyek secara mudah dan terorganisasi.
+
+Tahap berikutnya dalam memahami kondisi saat ini adalah melihat tingkat kesulitan mahasiswa dalam menemukan kegiatan yang sesuai. Berdasarkan survei, 91,8\% responden merasakan tingkat kesulitan pada kategori sedang hingga tinggi (skala 3--5), dengan 67,4\% berada pada skala 4 dan 5. Temuan ini mengindikasikan bahwa meskipun mahasiswa aktif berpartisipasi, mereka mengalami kesulitan yang cukup signifikan dalam menemukan kegiatan kolaboratif yang sesuai dengan keinginan mereka. Secara keseluruhan, kondisi saat ini menunjukkan bahwa mahasiswa:
+
+\begin{enumerate}
+  \item tidak secara rutin berpartisipasi dalam kegiatan kolaboratif,
+  \item mengandalkan sumber informasi yang tidak terstruktur,
+  \item mengalami kesulitan dalam menentukan kecocokan kegiatan dengan profil mereka.
+\end{enumerate}
+
+Hal ini memperkuat urgensi adanya sistem rekomendasi yang mampu membantu mahasiswa menemukan kegiatan kolaboratif secara lebih mudah, terarah, dan sesuai dengan karakteristik pribadi mereka.
+
+\section{Analisis Kebutuhan}
+
+Analisis kebutuhan pengguna dilakukan untuk memahami apa yang sebenarnya diperlukan mahasiswa dalam proses pencarian kegiatan kolaboratif. Analisis kebutuhan ini dilakukan berdasarkan hasil survei serta interpretasi terhadap perilaku dan hambatan yang dialami pengguna. Pendekatan ini penting agar solusi yang dikembangkan tidak hanya menjawab permasalahan secara umum, tetapi mampu mengakomodasi kebutuhan nyata mahasiswa dalam konteks yang lebih spesifik.
+
+\subsection{Identifikasi Masalah Pengguna}
+
+Untuk mengidentifikasi permasalahan utama yang dialami mahasiswa, dilakukan analisis lanjutan terhadap data survei terkait hambatan yang mereka hadapi dalam mencari kegiatan kolaboratif, kebutuhan mereka akan bantuan, serta faktor-faktor yang dianggap penting dalam menentukan kecocokan suatu proyek.
+
+Berdasarkan survei, salah satu masalah terbesar yang dirasakan mahasiswa adalah informasi kegiatan kolaboratif yang tidak terpusat, dengan 51,2\% dari 86 responden menyatakan bahwa informasi kegiatan kolaboratif tersebar di banyak platform sehingga menyulitkan mereka untuk melakukan pencarian secara efisien. Selain itu, 43\% responden mengungkapkan bahwa tidak adanya platform khusus yang dapat mengumpulkan berbagai peluang kegiatan kolaboratif secara terorganisasi membuat mereka harus mengandalkan sumber informal seperti media sosial atau rekomendasi teman. Hal ini memperkuat temuan pada analisis kondisi sebelumnya bahwa akses informasi mahasiswa sangat bergantung pada kanal yang tidak terstruktur. Survei juga menunjukkan bahwa 94,2\% dari 86 responden berada pada kategori kebutuhan bantuan sedang hingga tinggi (skala 3--5) dalam menentukan kegiatan kolaboratif yang sesuai. Hal ini menegaskan bahwa mahasiswa menyadari keterbatasan mereka dalam menentukan kegiatan yang selaras dengan minat dan kemampuan, serta menginginkan adanya sistem yang dapat mendukung proses tersebut.
+
+Lebih lanjut, survei juga menunjukkan bahwa ketika mahasiswa ditanyakan mengenai faktor-faktor yang dianggap paling penting dalam menentukan kecocokan kegiatan, responden secara dominan memilih minat pribadi dan keterampilan/\emph{skill} sebagai komponen utama. Faktor lain seperti ketersediaan waktu, gaya kerja, dan pengalaman sebelumnya juga dianggap berpengaruh. Temuan ini menunjukkan bahwa proses pencocokan yang ideal harus mempertimbangkan berbagai dimensi profil pengguna dan tidak dapat bergantung pada satu aspek saja. Secara keseluruhan, hasil identifikasi masalah menunjukkan bahwa mahasiswa menghadapi tiga kelompok masalah utama:
+
+\begin{enumerate}
+  \item Akses informasi yang tidak terpusat sehingga pencarian proyek memakan waktu dan tidak efisien.
+  \item Kesulitan dalam menilai kecocokan diri, terutama terkait minat, keterampilan, peran, dan gaya kerja.
+  \item Tidak adanya sistem yang memberikan rekomendasi terpersonalisasi, padahal mahasiswa membutuhkan bantuan untuk menentukan kegiatan yang relevan.
+\end{enumerate}
+
+Permasalahan-permasalahan ini menjadi dasar untuk merancang solusi yang dapat membantu mahasiswa menemukan proyek secara lebih akurat, cepat, dan sesuai dengan profil.
+
+\subsection{\emph{User Needs}}
+
+\emph{User needs} didapat berdasarkan masalah yang telah diidentifikasi. Berikut merupakan daftar \emph{needs} yang diturunkan dari masalah yang telah diidentifikasi sebagaimana ditunjukkan pada Tabel~\ref{tab:user-needs}.
+
+\begin{table}[H]
+  \caption{Daftar \emph{User Needs}}
+  \label{tab:user-needs}
+  \begin{tabularx}{\textwidth}{p{2.5cm} X}
+    \toprule
+    \textbf{Kode \emph{User Need}} & \textbf{Deskripsi \emph{User Need}} \\
+    \midrule
+    UN01 & Mahasiswa membutuhkan sarana untuk mengisi informasi mengenai dirinya yang akan digunakan sebagai dasar pencocokan dengan kegiatan kolaboratif. \\
+    \midrule
+    UN02 & Mahasiswa membutuhkan bantuan untuk menemukan kegiatan kolaboratif yang sesuai dengan minat, \emph{skill}, dan preferensi dirinya. \\
+    \midrule
+    UN03 & Mahasiswa membutuhkan informasi detail mengenai kegiatan kolaboratif sebelum memutuskan untuk mendaftar. \\
+    \midrule
+    UN04 & Mahasiswa yang tertarik dengan suatu kegiatan kolaboratif membutuhkan cara untuk mendaftarkan diri. \\
+    \midrule
+    UN05 & Mahasiswa yang memiliki ide atau inisiatif membutuhkan media untuk menawarkan kegiatan kolaboratif kepada mahasiswa lain. \\
+    \midrule
+    UN06 & Mahasiswa pembuat kegiatan kolaboratif membutuhkan sarana untuk melihat dan mengelola mahasiswa yang mendaftar ke kegiatannya. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{\emph{User Requirement}}
+
+\emph{User requirement} didapat berdasarkan \emph{user needs} yang telah diidentifikasi. Berikut merupakan daftar \emph{user requirement} yang diturunkan dari \emph{user needs} yang telah diidentifikasi sebagaimana ditunjukkan pada Tabel~\ref{tab:user-requirement}.
+
+\begin{longtable}{p{1.5cm} p{4cm} p{1.5cm} p{\dimexpr\linewidth-7cm-8\tabcolsep\relax}}
+  \caption{Daftar \emph{User Requirements}} \label{tab:user-requirement} \\
+  \toprule
+  \textbf{Kode UN} & \textbf{\emph{User Need}} & \textbf{Kode UR} & \textbf{\emph{User Requirement}} \\
+  \midrule
+  \endfirsthead
+  \multicolumn{4}{l}{\small\textit{\tablename~\thetable~(lanjutan)}} \\
+  \toprule
+  \textbf{Kode UN} & \textbf{\emph{User Need}} & \textbf{Kode UR} & \textbf{\emph{User Requirement}} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \multicolumn{4}{r}{\textit{Bersambung ke halaman berikutnya.}} \\
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  UN01 & Mahasiswa membutuhkan sarana untuk mengisi informasi mengenai dirinya yang akan digunakan sebagai dasar pencocokan dengan kegiatan kolaboratif. & UR01 & Pengguna harus dapat mengisi kuesioner yang memuat informasi mengenai minat, \emph{skill}, pengalaman, preferensi peran, dan informasi relevan lainnya. \\
+    \midrule
+  UN02 & Mahasiswa membutuhkan bantuan untuk menemukan kegiatan kolaboratif yang sesuai dengan minat, \emph{skill}, dan preferensi dirinya. & UR02 & Pengguna harus dapat memperoleh rekomendasi kegiatan kolaboratif berdasarkan kecocokan profil dirinya. \\
+    \midrule
+  UN02 & Mahasiswa membutuhkan bantuan untuk menemukan kegiatan kolaboratif yang sesuai dengan minat, \emph{skill}, dan preferensi dirinya. & UR03 & Pengguna harus dapat memperoleh \emph{feed} kegiatan kolaboratif yang urutannya mencerminkan tingkat kecocokan profil dirinya. \\
+    \midrule
+  UN03 & Mahasiswa membutuhkan informasi detail mengenai kegiatan kolaboratif sebelum memutuskan untuk mendaftar. & UR04 & Pengguna harus dapat melihat detail kegiatan kolaboratif seperti deskripsi, kebutuhan \emph{skill}, peran yang dibutuhkan, dan informasi pendukung lainnya. \\
+    \midrule
+  UN04 & Mahasiswa yang tertarik dengan suatu kegiatan kolaboratif membutuhkan cara untuk mendaftarkan diri. & UR05 & Pengguna harus dapat mendaftarkan diri ke kegiatan kolaboratif yang dipilih. \\
+    \midrule
+  UN05 & Mahasiswa yang memiliki ide atau inisiatif membutuhkan media untuk menawarkan kegiatan kolaboratif kepada mahasiswa lain. & UR06 & Pengguna harus dapat membuat dan mempublikasikan kegiatan kolaboratif baru ke dalam platform, termasuk mendefinisikan deskripsi, peran yang dibutuhkan, \emph{skill} yang dicari, jumlah anggota, dan \emph{timeline}. \\
+    \midrule
+  UN06 & Mahasiswa pembuat kegiatan kolaboratif membutuhkan sarana untuk melihat dan mengelola mahasiswa yang mendaftar ke kegiatannya. & UR07 & Pengguna harus dapat melihat daftar mahasiswa yang telah mendaftar ke kegiatan kolaboratif yang dibuatnya. \\
+    \midrule
+  UN06 & Mahasiswa pembuat kegiatan kolaboratif membutuhkan sarana untuk melihat dan mengelola mahasiswa yang mendaftar ke kegiatannya. & UR08 & Pengguna harus dapat menerima atau menolak mahasiswa yang mendaftar ke kegiatan kolaboratif yang dibuatnya. \\
+\end{longtable}
+
+\subsection{Kebutuhan Fungsional}
+
+Kebutuhan fungsional merupakan fungsi yang harus disediakan sistem agar mampu menjawab kebutuhan pengguna dan mengatasi permasalahan yang diidentifikasi sebelumnya. Adapun kebutuhan fungsional untuk merancang solusi yang dapat membantu mahasiswa menemukan proyek secara lebih akurat, cepat, dan sesuai dengan profil ditunjukkan pada Tabel~\ref{tab:kebutuhan-fungsional}.
+
+\begin{longtable}{p{1.5cm} p{4cm} p{1.5cm} p{\dimexpr\linewidth-7cm-8\tabcolsep\relax}}
+  \caption{Daftar Kebutuhan Fungsional} \label{tab:kebutuhan-fungsional} \\
+  \toprule
+  \textbf{Kode UR} & \textbf{\emph{User Requirement}} & \textbf{Kode FR} & \textbf{\emph{Functional Requirement}} \\
+  \midrule
+  \endfirsthead
+  \multicolumn{4}{l}{\small\textit{\tablename~\thetable~(lanjutan)}} \\
+  \toprule
+  \textbf{Kode UR} & \textbf{\emph{User Requirement}} & \textbf{Kode FR} & \textbf{\emph{Functional Requirement}} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \multicolumn{4}{r}{\textit{Bersambung ke halaman berikutnya.}} \\
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  UR01 & Pengguna harus dapat mengisi kuesioner yang memuat informasi mengenai minat, \emph{skill}, pengalaman, preferensi peran, dan informasi relevan lainnya. & FR01 & Sistem harus dapat mengumpulkan, menyimpan, dan memperbarui data profil mahasiswa melalui kuesioner yang relevan untuk proses pencocokan. \\
+    \midrule
+  UR02 & Pengguna harus dapat memperoleh rekomendasi kegiatan kolaboratif berdasarkan kecocokan profil dirinya. & FR02 & Sistem harus memiliki mekanisme pencocokan antara profil mahasiswa dan kebutuhan kegiatan kolaboratif berdasarkan parameter yang ditentukan. \\
+    \midrule
+  UR03 & Pengguna harus dapat memperoleh \emph{feed} kegiatan kolaboratif yang urutannya mencerminkan tingkat kecocokan profil dirinya. & FR03 & Sistem harus dapat menampilkan hasil rekomendasi kegiatan kolaboratif kepada mahasiswa. \\
+    \midrule
+  UR04 & Pengguna harus dapat melihat detail kegiatan kolaboratif seperti deskripsi, kebutuhan \emph{skill}, peran yang dibutuhkan, dan informasi pendukung lainnya. & FR04 & Sistem harus dapat menampilkan informasi lengkap dan detail dari setiap kegiatan kolaboratif yang tersedia. \\
+    \midrule
+  UR05 & Pengguna harus dapat mendaftarkan diri ke kegiatan kolaboratif yang dipilih. & FR05 & Sistem harus dapat memfasilitasi pendaftaran mahasiswa ke kegiatan kolaboratif yang dipilih. \\
+    \midrule
+  UR06 & Pengguna harus dapat membuat dan mempublikasikan kegiatan kolaboratif baru ke dalam platform, termasuk mendefinisikan deskripsi, peran yang dibutuhkan, \emph{skill} yang dicari, jumlah anggota, dan \emph{timeline}. & FR06 & Sistem harus dapat memfasilitasi pembuatan kegiatan kolaboratif baru oleh mahasiswa beserta pengisian kebutuhan kegiatan tersebut secara terstruktur. \\
+    \midrule
+  UR07 & Pengguna harus dapat melihat daftar mahasiswa yang telah mendaftar ke kegiatan kolaboratif yang dibuatnya. & FR07 & Sistem harus dapat menampilkan daftar mahasiswa yang telah mendaftar ke suatu kegiatan kolaboratif kepada pembuat kegiatan tersebut. \\
+    \midrule
+  UR08 & Pengguna harus dapat menerima atau menolak mahasiswa yang mendaftar ke kegiatan kolaboratif yang dibuatnya. & FR08 & Sistem harus memungkinkan pembuat kegiatan kolaboratif untuk menerima atau menolak mahasiswa yang mendaftar. \\
+\end{longtable}
+
+\subsection{Kebutuhan Nonfungsional}
+
+Kebutuhan nonfungsional merupakan fungsi berisi kualitas yang harus dipenuhi oleh sistem agar dapat digunakan secara efektif, efisien, dan dapat dipercaya oleh pengguna. Adapun kebutuhan nonfungsional untuk merancang solusi yang dapat membantu mahasiswa menemukan proyek secara lebih akurat, cepat, dan sesuai dengan profil ditunjukkan pada Tabel~\ref{tab:kebutuhan-nonfungsional}.
+
+\begin{table}[H]
+  \caption{Daftar Kebutuhan Nonfungsional}
+  \label{tab:kebutuhan-nonfungsional}
+  \begin{tabularx}{\textwidth}{p{1.5cm} p{3cm} X}
+    \toprule
+    \textbf{Kode} & \textbf{Kebutuhan Nonfungsional} & \textbf{Deskripsi} \\
+    \midrule
+    NFR01 & \emph{Usability} & Sistem harus mudah digunakan, memiliki antarmuka yang intuitif, dan dapat dipahami oleh mahasiswa tanpa pelatihan khusus. \\
+    \midrule
+    NFR02 & \emph{Reliability} & Sistem harus memberikan hasil yang konsisten dan stabil untuk input yang sama. \\
+    \midrule
+    NFR03 & \emph{Security} & Sistem harus memastikan bahwa data profil pengguna hanya dapat diakses oleh pengguna yang bersangkutan, serta seluruh komunikasi antara klien dan peladen menggunakan mekanisme otentikasi berbasis token. \\
+    \midrule
+    NFR04 & \emph{Performance} & Sistem harus mampu mengembalikan hasil rekomendasi kepada pengguna dalam waktu yang wajar sehingga tidak mengganggu pengalaman penggunaan aplikasi. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Dengan memenuhi kebutuhan ini, sistem dapat memberikan layanan pembentukan tim dan rekomendasi \emph{role} yang baik bagi mahasiswa.
+
+\subsection{\emph{Traceability} Kebutuhan}
+
+Kebutuhan nonfungsional merupakan fungsi berisi kualitas yang harus dipenuhi oleh sistem agar dapat digunakan secara efektif, efisien, dan dapat dipercaya oleh pengguna. Adapun kebutuhan nonfungsional untuk merancang solusi yang dapat membantu mahasiswa menemukan proyek secara lebih akurat, cepat, dan sesuai dengan profil ditunjukkan pada Tabel~\ref{tab:traceability}.
+
+\begin{table}[H]
+  \caption{Matriks \emph{Traceability} Kebutuhan}
+  \label{tab:traceability}
+  \begin{tabularx}{\textwidth}{p{2cm} p{2cm} X}
+    \toprule
+    \textbf{Kode UN} & \textbf{Kode UR} & \textbf{Kode FR} \\
+    \midrule
+    UN01 & UR01 & FR01 \\
+    \midrule
+    UN01 & UR02 & FR02, FR03 \\
+    \midrule
+    UN02 & UR03 & FR04 \\
+    \midrule
+    UN03 & UR04 & FR04 \\
+    \midrule
+    UN04 & UR05 & FR05 \\
+    \midrule
+    UN05 & UR06 & FR06 \\
+    \midrule
+    UN06 & UR07 & FR07 \\
+    \midrule
+    UN06 & UR08 & FR08 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\section{Analisis Pemilihan Solusi}
+
+Analisis pemilihan solusi pada subbab ini difokuskan pada pemilihan paradigma sistem rekomendasi yang paling tepat diterapkan pada modul \emph{People-to-Project}. Pemilihan paradigma ini penting karena mekanisme rekomendasi merupakan inti kontribusi teknis tugas akhir ini, dan pilihan pendekatan secara langsung menentukan kemampuan sistem dalam menjawab permasalahan yang telah diidentifikasi.
+
+Sebagaimana dibahas pada Bab II, terdapat tiga paradigma utama dalam sistem rekomendasi: \emph{Collaborative Filtering}, \emph{Content-Based Filtering}, dan \emph{Knowledge-Based Recommendation}. Ketiga paradigma ini dievaluasi menggunakan \emph{Weighted Scoring Model} (WSM) untuk menentukan pendekatan yang paling sesuai dengan karakteristik permasalahan dan kebutuhan sistem.
+
+\subsection{Alternatif Solusi}
+
+Terdapat tiga alternatif paradigma sistem rekomendasi yang dipertimbangkan sebagai mekanisme rekomendasi modul \emph{People-to-People}, sebagaimana dirangkum pada Tabel~\ref{tab:alternatif-solusi}.
+
+\begin{table}[H]
+  \caption{Daftar Alternatif Solusi}
+  \label{tab:alternatif-solusi}
+  \begin{tabularx}{\textwidth}{p{1cm} p{4.5cm} X}
+    \toprule
+    \textbf{Kode} & \textbf{Alternatif Solusi} & \textbf{Deskripsi Singkat} \\
+    \midrule
+    A1 & \emph{Collaborative Filtering} & Merekomendasikan berdasarkan pola perilaku pengguna lain yang memiliki karakteristik serupa. \\
+    \midrule
+    A2 & \emph{Content-Based Filtering} & Merekomendasikan berdasarkan kesamaan atribut antara profil pengguna dengan profil calon mitra. \\
+    \midrule
+    A3 & \emph{Knowledge-Based Recommendation} & Merekomendasikan berdasarkan pengetahuan eksplisit mengenai atribut pengguna tanpa memerlukan riwayat interaksi. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\textbf{Alternatif 1: \emph{Collaborative Filtering} (CF).}
+
+Pendekatan ini merekomendasikan calon mitra berdasarkan pola perilaku pengguna lain yang memiliki karakteristik serupa. Sistem mengidentifikasi pengguna dengan riwayat interaksi yang mirip, kemudian menyarankan individu yang disukai atau dipilih oleh pengguna serupa tersebut. \textcite{adomavicius2005} menjelaskan bahwa CF membutuhkan riwayat interaksi yang cukup untuk menghasilkan rekomendasi yang akurat sehingga rentan terhadap masalah \emph{cold start} pada platform baru yang belum memiliki data historis pengguna.
+
+\textbf{Alternatif 2: \emph{Content-Based Filtering} (CBF).}
+
+Pendekatan ini merekomendasikan calon mitra berdasarkan kesamaan atribut antara profil pengguna dengan profil calon mitra. Sistem membangun representasi vektor dari atribut profil, kemudian menghitung tingkat kesamaan antar vektor untuk menghasilkan peringkat rekomendasi. Meskipun CBF lebih independen dari riwayat interaksi dibandingkan CF, pendekatan ini masih membutuhkan histori preferensi pengguna untuk membangun profil yang akurat dan kurang optimal untuk konteks \emph{People-to-People} yang merekomendasikan individu, bukan item.
+
+\textbf{Alternatif 3: \emph{Knowledge-Based Recommendation}.}
+
+Pendekatan ini merekomendasikan calon mitra berdasarkan pengetahuan eksplisit mengenai atribut profil pengguna tanpa memerlukan riwayat interaksi apapun. Sistem menghitung tingkat kecocokan secara langsung dari data profil yang diisi pengguna, menggunakan aturan atau model pembobotan yang didefinisikan berdasarkan \emph{domain knowledge}. \textcite{burke2002} menjelaskan bahwa pendekatan ini sangat efektif untuk mengatasi permasalahan \emph{cold start} karena tidak bergantung pada data perilaku historis. Dalam implementasinya pada tugas akhir ini, \emph{Knowledge-Based Recommendation} diwujudkan melalui mekanisme \emph{Affinity Based Matching} yang menghitung skor kecocokan berdasarkan pembobotan atribut profil multidimensi.
+
+\subsection{Analisis Penentuan Solusi}
+
+Untuk menentukan paradigma rekomendasi yang paling tepat secara objektif, digunakan kerangka kerja evaluasi kuantitatif \emph{Weighted Scoring Model} (WSM). Menurut \textcite{kumar2022}, WSM bekerja efektif untuk pengambilan keputusan multi-kriteria karena setiap alternatif dievaluasi secara numerik terhadap setiap kriteria yang telah diberi bobot sehingga menghasilkan proses penilaian yang transparan dan dapat direplikasi.
+
+Kriteria evaluasi diturunkan dari karakteristik permasalahan yang telah diidentifikasi pada Subbab III.1 dan spesifikasi kebutuhan pada Subbab III.2. Nilai diberikan menggunakan skala 1--5, yaitu nilai 5 merepresentasikan pemenuhan kriteria yang sangat baik dan nilai 1 merepresentasikan pemenuhan yang sangat kurang. Rincian kriteria evaluasi ditunjukkan pada Tabel~\ref{tab:kriteria-evaluasi}.
+
+\begin{table}[H]
+  \caption{Kriteria Evaluasi Alternatif Solusi}
+  \label{tab:kriteria-evaluasi}
+  \begin{tabularx}{\textwidth}{p{1.5cm} p{4cm} X}
+    \toprule
+    \textbf{Kode} & \textbf{Nama Kriteria} & \textbf{Penjelasan} \\
+    \midrule
+    K1 & Ketersediaan Data Awal & Pendekatan dapat bekerja tanpa riwayat interaksi pengguna sebelumnya. \\
+    \midrule
+    K2 & Keterbacaan Hasil & Pengguna dapat memahami mengapa seseorang direkomendasikan melalui indikasi kecocokan yang ditampilkan. \\
+    \midrule
+    K3 & Fleksibilitas Atribut & Mendukung pembobotan banyak atribut profil sekaligus seperti minat, \emph{skill}, pengalaman, dan gaya kerja. \\
+    \midrule
+    K4 & Konsistensi Hasil & Menghasilkan rekomendasi yang stabil dan dapat diprediksi untuk input profil yang sama. \\
+    \midrule
+    K5 & Kelayakan Implementasi & Pendekatan realistis untuk diimplementasikan dalam batasan waktu dan sumber daya tugas akhir. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Setelah kriteria evaluasi alternatif solusi ditentukan, setiap kriteria tersebut diberikan bobot dengan tingkat yang berbeda-beda sesuai dengan urgensi yang ada sebagaimana ditunjukkan pada Tabel~\ref{tab:pembobotan-kriteria}.
+
+\begin{longtable}{p{1.5cm} p{3.5cm} p{1.5cm} p{\dimexpr\linewidth-6.5cm-8\tabcolsep\relax}}
+  \caption{Pembobotan Kriteria Evaluasi} \label{tab:pembobotan-kriteria} \\
+  \toprule
+  \textbf{Kode} & \textbf{Nama Kriteria} & \textbf{Bobot} & \textbf{Alasan Penetapan Bobot} \\
+  \midrule
+  \endfirsthead
+  \multicolumn{4}{l}{\small\textit{\tablename~\thetable~(lanjutan)}} \\
+  \toprule
+  \textbf{Kode} & \textbf{Nama Kriteria} & \textbf{Bobot} & \textbf{Alasan Penetapan Bobot} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \multicolumn{4}{r}{\textit{Bersambung ke halaman berikutnya.}} \\
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  K1 & Ketersediaan Data Awal & 5 & Paling kritis. Platform baru tanpa riwayat interaksi apa pun; pendekatan yang tidak dapat menangani kondisi ini gugur secara fundamental sebelum kriteria lain dinilai. \\
+    \midrule
+  K2 & Keterbacaan Hasil & 3 & Penting namun tidak menentukan. Kebutuhan fungsional terkait \emph{explainability} telah disederhanakan menjadi indikator label kecocokan, bukan skor numerik penuh. \\
+    \midrule
+  K3 & Fleksibilitas Atribut & 4 & Sangat penting. Atribut profil mahasiswa bersifat multidimensi (minat, \emph{skill}, pengalaman, dan gaya kerja) dan harus dapat dibobot secara berbeda sesuai relevansinya. \\
+    \midrule
+  K4 & Konsistensi Hasil & 3 & Penting untuk keandalan sistem, namun bukan pembeda utama karena seluruh alternatif yang dievaluasi bersifat deterministik. \\
+    \midrule
+  K5 & Kelayakan Implementasi & 4 & Sangat penting. Tugas akhir memiliki batasan waktu dan sumber daya yang nyata. Solusi yang terlalu kompleks berisiko tidak dapat diselesaikan sesuai spesifikasi. \\
+\end{longtable}
+
+Setelah kriteria dan bobot ditetapkan, dilakukan penilaian kualitatif terhadap setiap alternatif untuk setiap kriteria sebelum dilakukan penskoran numerik. Penilaian ini disajikan pada Tabel~\ref{tab:penilaian-alternatif}.
+
+\begin{longtable}{p{1.2cm} p{0.8cm} p{0.8cm} p{0.8cm} p{\dimexpr\linewidth-3.6cm-10\tabcolsep\relax}}
+  \caption{Penilaian Alternatif terhadap Kriteria Evaluasi} \label{tab:penilaian-alternatif} \\
+  \toprule
+  \textbf{Kriteria} & \textbf{A1} & \textbf{A2} & \textbf{A3} & \textbf{Rasionalisasi} \\
+  \midrule
+  \endfirsthead
+  \multicolumn{5}{l}{\small\textit{\tablename~\thetable~(lanjutan)}} \\
+  \toprule
+  \textbf{Kriteria} & \textbf{A1} & \textbf{A2} & \textbf{A3} & \textbf{Rasionalisasi} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \multicolumn{5}{r}{\textit{Bersambung ke halaman berikutnya.}} \\
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  K1 & 1 & 2 & 5 & CF sepenuhnya bergantung pada riwayat interaksi pengguna; tanpa data historis, sistem tidak dapat menghasilkan rekomendasi apa pun. CBF masih membutuhkan histori preferensi pengguna untuk membangun profil yang akurat. \emph{Knowledge-Based Recommendation} bekerja sepenuhnya dari data profil eksplisit yang diisi pengguna melalui kuesioner \emph{onboarding}, tanpa memerlukan riwayat interaksi apa pun. \\
+    \midrule
+  K2 & 1 & 2 & 5 & CF menghasilkan rekomendasi berdasarkan pola perilaku yang tidak transparan dan sulit dijelaskan ke pengguna. CBF menghasilkan skor kesamaan vektor yang kurang intuitif bagi pengguna awam. \emph{Knowledge-Based Recommendation} memungkinkan penampilan indikasi kecocokan berbasis atribut yang dapat langsung dipahami pengguna. \\
+    \midrule
+  K3 & 2 & 3 & 5 & CF tidak dirancang untuk pembobotan atribut profil; rekomendasinya berbasis pola kolektif. CBF menghitung kesamaan antarvektor atribut namun kurang fleksibel dalam memberikan bobot berbeda per atribut. \emph{Knowledge-Based Recommendation} dirancang khusus untuk pembobotan atribut multidimensi secara eksplisit dan fleksibel. \\
+    \midrule
+  K4 & 2 & 3 & 5 & CF rentan terhadap perubahan karena bergantung pada data kolektif pengguna lain yang terus berubah. CBF lebih konsisten namun masih dapat berubah seiring pembaruan representasi vektor. \emph{Knowledge-Based Recommendation} sepenuhnya deterministik; input profil yang sama selalu menghasilkan output yang sama. \\
+    \midrule
+  K5 & 3 & 3 & 4 & CF membutuhkan infrastruktur pengumpulan data perilaku yang kompleks dan tidak relevan untuk platform baru. CBF membutuhkan representasi vektor dan perhitungan \emph{similarity} yang cukup kompleks. \emph{Knowledge-Based Recommendation} memiliki kompleksitas implementasi yang moderat dan realistis untuk diselesaikan dalam batasan tugas akhir. \\
+\end{longtable}
+
+Berdasarkan penilaian kualitatif di atas, dilakukan perhitungan skor terbobot untuk ketiga alternatif menggunakan WSM. Hasil perhitungan disajikan pada Tabel~\ref{tab:wsm-hasil}.
+
+\begin{table}[H]
+  \caption{Hasil Perhitungan \emph{Weighted Scoring Model}}
+  \label{tab:wsm-hasil}
+  \begin{tabularx}{\textwidth}{p{2cm} p{2cm} X X X}
+    \toprule
+    \textbf{Kriteria} & \textbf{Bobot (W)} & \textbf{A1} & \textbf{A2} & \textbf{A3} \\
+    \midrule
+    K1 & 5 & $1 \times 5 = 5$  & $2 \times 5 = 10$ & $5 \times 5 = 25$ \\
+    \midrule
+    K2 & 3 & $1 \times 3 = 3$  & $2 \times 3 = 6$  & $5 \times 3 = 15$ \\
+    \midrule
+    K3 & 4 & $2 \times 4 = 8$  & $3 \times 4 = 12$ & $5 \times 4 = 20$ \\
+    \midrule
+    K4 & 3 & $2 \times 3 = 6$  & $3 \times 3 = 9$  & $5 \times 3 = 15$ \\
+    \midrule
+    K5 & 4 & $3 \times 4 = 12$ & $3 \times 4 = 12$ & $4 \times 4 = 16$ \\
+    \midrule
+    \textbf{Total Skor} & & \textbf{34} & \textbf{49} & \textbf{91} \\
+    \midrule
+    \textbf{Peringkat}  & & \textbf{3} & \textbf{2} & \textbf{1 (Terpilih)} \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Berdasarkan perhitungan WSM, Alternatif 3 (\emph{Knowledge-Based Recommendation}) menempati peringkat pertama dengan total skor 91, unggul signifikan dibandingkan Alternatif 2 (\emph{Content-Based Filtering}) dengan skor 49 dan Alternatif 1 (\emph{Collaborative Filtering}) dengan skor 34. Keunggulan \emph{Knowledge-Based Recommendation} terutama ditopang oleh performa tertinggi pada kriteria K1 (Ketersediaan Data Awal) dan K3 (Fleksibilitas Atribut), yang merupakan dua kriteria dengan bobot tertinggi. Hal ini konsisten dengan karakteristik permasalahan yang diidentifikasi: platform baru tanpa data historis yang membutuhkan mekanisme pencocokan berbasis atribut profil eksplisit multidimensi.

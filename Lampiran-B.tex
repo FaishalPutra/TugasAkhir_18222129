@@ -1,0 +1,329 @@
+% ==========================================
+% LAMPIRAN B
+% ==========================================
+\cleardoublepage
+\chapter{RINCIAN IMPLEMENTASI ALGORITMA \emph{AFFINITYENGINE} MODUL \emph{PEOPLE-TO-PROJECT}}
+\label{chap:lampiran-b}
+
+\renewcommand\thelstlisting{\thechapter.\arabic{lstlisting}}
+
+\section{Alur Implementasi Algoritma}
+\label{sec:b-alur-implementasi}
+
+Implementasi algoritma dilakukan setelah sistem memperoleh data profil mahasiswa dan data kegiatan kolaboratif. Alur implementasi dimulai dari validasi data masukan, dilanjutkan dengan perhitungan skor kecocokan per atribut pada masing-masing sub-algoritma, penggabungan skor menjadi AffinityScore akhir, penerapan \emph{threshold} dan \emph{badge}, hingga perangkingan \emph{feed} rekomendasi. Ringkasan tahapan ini disajikan pada Tabel~\ref{tab:b1-alur}.
+
+\begin{longtable}{p{0.06\textwidth} p{0.38\textwidth} p{0.44\textwidth}}
+\caption{Ringkasan Alur Implementasi Algoritma \emph{AffinityEngine}} \label{tab:b1-alur} \\
+\toprule
+\textbf{Tahap} & \textbf{Nama Proses} & \textbf{Keluaran} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{c}{\parbox{0.88\textwidth}{\centering \tablename\ \thetable\ Ringkasan Alur Implementasi Algoritma (lanjutan)}} \\
+\toprule
+\textbf{Tahap} & \textbf{Nama Proses} & \textbf{Keluaran} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\textit{Bersambung ke halaman berikutnya.}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+0 & Penyaringan kendala keras (\texttt{IsEligible}) & Status \emph{eligible}/tidak berdasarkan ketersediaan waktu, dijalankan sebelum perhitungan skor kecocokan \\
+\midrule
+1 & Validasi data masukan & Data profil mahasiswa dan data kegiatan kolaboratif siap digunakan \\
+\midrule
+2 & Pembentukan variabel atribut & \texttt{Ks}, \texttt{Kp} (\emph{skill}), \texttt{Ms}, \texttt{Mp} (minat), \texttt{expLevel} (pengalaman), \texttt{gayaKerja}, \texttt{preferensiPeran} \\
+\midrule
+3 & Perhitungan skor kecocokan Algoritma 1 (\emph{Demands-Abilities Fit}) & SkorSkill dan SkorPengalaman pada rentang $[0,1]$ \\
+\midrule
+4 & Perhitungan SkorAlgoritma1 & Skor gabungan berbobot 0,75/0,25 pada rentang $[0,1]$ \\
+\midrule
+5 & Perhitungan skor kecocokan Algoritma 2 (\emph{Needs-Supplies Fit}) & SkorMinat, SkorGayaKerja, dan SkorPeran pada rentang $[0,1]$ \\
+\midrule
+6 & Perhitungan SkorAlgoritma2 & Skor gabungan berbobot 0,611/0,194/0,194 pada rentang $[0,1]$ \\
+\midrule
+7 & Penggabungan AffinityScore akhir & AffinityScore pada rentang $[0,1]$ (kombinasi 50:50) \\
+\midrule
+8 & Penerapan \emph{threshold} 30\% & Status lolos/tidak lolos ambang batas rekomendasi (\texttt{TerapkanThreshold}) \\
+\midrule
+9 & Penentuan \emph{badge} tiga tingkat & Kategori \emph{badge} berdasarkan AffinityScore (\texttt{TentukanBadge}) \\
+\midrule
+10 & Perangkingan \emph{feed} & Daftar kegiatan terurut menurun berdasarkan AffinityScore \\
+\end{longtable}
+
+Catatan: penyaringan kendala keras (Tahap 0) merupakan mekanisme terpisah dari penerapan \emph{threshold} 30\% (Tahap 8). Tahap 0 memeriksa kelayakan dasar suatu kegiatan berdasarkan ketersediaan waktu mahasiswa sebelum skor kecocokan dihitung sama sekali (fungsi \texttt{IsEligible}), sedangkan Tahap 8 menyaring kegiatan yang telah memiliki AffinityScore namun berada di bawah ambang batas 30\% (fungsi \texttt{TerapkanThreshold}). Kedua mekanisme ini independen dan tidak boleh disatukan.
+
+\section{Implementasi Perhitungan Skor Atribut}
+\label{sec:b-implementasi-skor}
+
+Perhitungan skor membedakan dua sub-algoritma: Algoritma 1 (\emph{Demands-Abilities Fit}) mencakup atribut \emph{skill} dan pengalaman, sedangkan Algoritma 2 (\emph{Needs-Supplies Fit}) mencakup minat, gaya kerja, dan preferensi peran. Listing~\ref{lst:b1-skor-skill}--\ref{lst:b8-breakdown} menyajikan \emph{pseudocode} seluruh fungsi implementasi secara berurutan sesuai alur pada Tabel~\ref{tab:b1-alur}.
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={{SkorSkill(profil, project)}}, label={lst:b1-skor-skill}, frame=single, captionpos=t, language=]
+Function SkorSkill(profil, project)
+  Input:  profil.skill        : himpunan tag skill milik mahasiswa
+          project.skillDicari : himpunan tag skill dibutuhkan kegiatan
+                                (gabungan skillDicari seluruh role)
+  Output: skorSkill dalam [0,1]
+
+  skorSkill <- Coverage(profil.skill, project.skillDicari)
+  return skorSkill
+End Function
+
+Function Coverage(milik, dibutuhkan)
+  if |dibutuhkan| = 0 then
+    return 1  // tidak ada tuntutan -> skor penuh
+  end if
+  milikSet <- { lowercase(s) | s in milik }
+  cocok    <- |{ d in dibutuhkan | lowercase(d) in milikSet }|
+  return cocok / |dibutuhkan|
+End Function
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={SkorPengalaman(profil, project)}, label={lst:b2-skor-pengalaman}, frame=single, captionpos=t, language=]
+Function SkorPengalaman(profil, project)
+  Input:  profil.pengalaman     : level pengalaman mahasiswa, ordinal 1..3
+          project.pengalamanReq : level pengalaman dibutuhkan kegiatan, 1..3
+  Output: skorPengalaman dalam [0,1]
+
+  selisih        <- |profil.pengalaman - project.pengalamanReq|
+  skorPengalaman <- 1 - (selisih / 2)  // 2 = selisih maksimum skala 1..3
+  return skorPengalaman
+End Function
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={SkorAlgoritma1(skorSkill, skorPengalaman)}, label={lst:b3-skor-algo1}, frame=single, captionpos=t, language=]
+Function SkorAlgoritma1(skorSkill, skorPengalaman)
+  Input:  skorSkill      : hasil SkorSkill, rentang [0,1]
+          skorPengalaman : hasil SkorPengalaman, rentang [0,1]
+  Output: skorAlgoritma1 dalam [0,1]
+
+  BOBOT_SKILL      <- 0.75  // bobot ROC, Bab IV.3.2
+  BOBOT_PENGALAMAN <- 0.25
+
+  skorAlgoritma1 <- (BOBOT_SKILL * skorSkill)
+                  + (BOBOT_PENGALAMAN * skorPengalaman)
+  return skorAlgoritma1
+End Function
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={SkorMinat, SkorGayaKerja, SkorPeran(profil, project)}, label={lst:b4-skor-minat-gk-peran}, frame=single, captionpos=t, language=]
+Function SkorMinat(profil, project)
+  Input:  profil.minatTag  : himpunan tag minat milik mahasiswa
+          project.minatTag : himpunan tag minat kegiatan
+  Output: skorMinat dalam [0,1]
+
+  skorMinat <- Coverage(profil.minatTag, project.minatTag)  // Listing B.1
+  return skorMinat
+End Function
+
+Function SkorGayaKerja(profil, project)
+  Input:  profil.gayaKerja  : gaya kerja mahasiswa ("Terstruktur"|"Fleksibel")
+          project.gayaKerja : preferensi gaya kerja kegiatan
+  Output: skorGayaKerja dalam {0, 1}
+
+  if lowercase(profil.gayaKerja) = lowercase(project.gayaKerja) then
+    return 1
+  else
+    return 0
+  end if
+End Function
+
+Function SkorPeran(profil, project)
+  Input:  profil.preferensiPeran  : peran pilihan mahasiswa (taksonomi 3 kategori)
+          project.rolesDibutuhkan : himpunan peran dibutuhkan kegiatan
+  Output: skorPeran dalam {0, 0.5, 1}
+
+  if |project.rolesDibutuhkan| = 0 then
+    return 0.5  // kegiatan tak menetapkan peran spesifik -> netral
+  end if
+  rolesSet <- { lowercase(r) | r in project.rolesDibutuhkan }
+  if lowercase(profil.preferensiPeran) in rolesSet then
+    return 1
+  else
+    return 0
+  end if
+End Function
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={SkorAlgoritma2(skorMinat, skorGayaKerja, skorPeran)}, label={lst:b5-skor-algo2}, frame=single, captionpos=t, language=]
+Function SkorAlgoritma2(skorMinat, skorGayaKerja, skorPeran)
+  Input:  skorMinat     : hasil SkorMinat, rentang [0,1]
+          skorGayaKerja : hasil SkorGayaKerja, dalam {0, 1}
+          skorPeran     : hasil SkorPeran, dalam {0, 0.5, 1}
+  Output: skorAlgoritma2 dalam [0,1]
+
+  BOBOT_MINAT      <- 0.611  // bobot ROC, Bab IV.3.2
+  BOBOT_GAYA_KERJA <- 0.194
+  BOBOT_PERAN      <- 0.194
+
+  skorAlgoritma2 <- (BOBOT_MINAT * skorMinat)
+                  + (BOBOT_GAYA_KERJA * skorGayaKerja)
+                  + (BOBOT_PERAN * skorPeran)
+  return skorAlgoritma2
+End Function
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={AffinityScoreAkhir(skorAlgoritma1, skorAlgoritma2)}, label={lst:b6-affinity-score}, frame=single, captionpos=t, language=]
+Function AffinityScoreAkhir(skorAlgoritma1, skorAlgoritma2)
+  Input:  skorAlgoritma1 : hasil SkorAlgoritma1, rentang [0,1]
+          skorAlgoritma2 : hasil SkorAlgoritma2, rentang [0,1]
+  Output: affinityScore dalam [0,1]
+
+  BOBOT_ALGO <- 0.5  // kombinasi setara 50:50
+
+  affinityScore <- (BOBOT_ALGO * skorAlgoritma1)
+                 + (BOBOT_ALGO * skorAlgoritma2)
+  return affinityScore
+End Function
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={{IsEligible, TerapkanThreshold, TentukanBadge}}, label={lst:b7-gating}, frame=single, captionpos=t, language=]
+Function IsEligible(profil, project)
+  // Tahap 0 - kendala keras, dijalankan SEBELUM skor dihitung
+  Input:  project.jadwalSlot       : himpunan slot waktu kegiatan
+          profil.ketersediaanWaktu : himpunan slot ketersediaan mahasiswa
+  Output: eligible dalam {TRUE, FALSE}
+
+  if |project.jadwalSlot| = 0 then
+    return TRUE  // kegiatan tak menetapkan jadwal -> lolos otomatis
+  end if
+  tersedia <- { lowercase(s) | s in profil.ketersediaanWaktu }
+  return exists slot in project.jadwalSlot such that lowercase(slot) in tersedia
+End Function
+
+Function TerapkanThreshold(affinityScore)
+  Input:  affinityScore : hasil AffinityScoreAkhir, rentang [0,1]
+  Output: lolosFeed dalam {TRUE, FALSE}
+
+  AMBANG_BATAS <- 0.3  // Bab IV.3.4, fixed rule
+  return affinityScore >= AMBANG_BATAS
+End Function
+
+Function TentukanBadge(affinityScore)
+  Input:  affinityScore : hasil AffinityScoreAkhir, rentang [0,1]
+  Output: badge dalam {"hijau", "kuning", "abu", "none"}
+
+  persen <- affinityScore * 100
+  if persen >= 85 then return "hijau"
+  if persen >= 60 then return "kuning"
+  if persen >= 30 then return "abu"
+  return "none"
+End Function
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={{BreakdownKontribusi, PerangkinganFeed}}, label={lst:b8-breakdown}, frame=single, captionpos=t, language=]
+Function BreakdownKontribusi(skorSkill, skorPengalaman, skorMinat,
+                              skorGayaKerja, skorPeran)
+  Input:  kelima skor atribut (masing-masing hasil Listing B.1-B.4)
+  Output: breakdown : peta atribut -> {skor, kontribusi}
+
+  BOBOT_ALGO <- 0.5
+  kontribusi(bobotInternal, skor) <- BOBOT_ALGO * bobotInternal * skor
+
+  breakdown["skill"]      <- {skor: skorSkill,      kontribusi: kontribusi(0.75,  skorSkill)}
+  breakdown["pengalaman"] <- {skor: skorPengalaman, kontribusi: kontribusi(0.25,  skorPengalaman)}
+  breakdown["minat"]      <- {skor: skorMinat,      kontribusi: kontribusi(0.611, skorMinat)}
+  breakdown["gayaKerja"]  <- {skor: skorGayaKerja,  kontribusi: kontribusi(0.194, skorGayaKerja)}
+  breakdown["peran"]      <- {skor: skorPeran,      kontribusi: kontribusi(0.194, skorPeran)}
+  // total seluruh nilai kontribusi = affinityScore akhir
+  return breakdown
+End Function
+
+Function PerangkinganFeed(daftarKegiatan)
+  Input:  daftarKegiatan : kegiatan yang lolos IsEligible dan TerapkanThreshold
+  Output: feed terurut menurun berdasarkan affinityScore
+
+  sort daftarKegiatan by affinityScore descending
+  return daftarKegiatan
+End Function
+\end{lstlisting}
+\end{minipage}
+
+\section{Contoh Penelusuran Perhitungan Skor}
+\label{sec:b-contoh-penelusuran}
+
+Bagian ini menyajikan satu contoh penelusuran implementasi untuk menunjukkan bagaimana nilai tiap atribut menghasilkan AffinityScore akhir. Contoh ini bersifat ilustratif dan digunakan untuk memperjelas alur implementasi, bukan sebagai hasil evaluasi akhir sistem.
+
+\begin{longtable}{p{0.20\textwidth} p{0.33\textwidth} p{0.33\textwidth}}
+\caption{Contoh Data Masukan Profil Mahasiswa dan Kebutuhan Kegiatan} \label{tab:b-contoh-input} \\
+\toprule
+\textbf{Atribut} & \textbf{Profil Mahasiswa} & \textbf{Kebutuhan Kegiatan} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{c}{\parbox{0.88\textwidth}{\centering \tablename\ \thetable\ Contoh Data Masukan (lanjutan)}} \\
+\toprule
+\textbf{Atribut} & \textbf{Profil Mahasiswa} & \textbf{Kebutuhan Kegiatan} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\textit{Bersambung ke halaman berikutnya.}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\emph{Skill}         & Python, Machine Learning, SQL      & Python, Machine Learning \\
+\midrule
+Minat                & AI, Data Science                   & AI, Data Science, Riset \\
+\midrule
+Gaya kerja           & Terstruktur                        & Terstruktur \\
+\midrule
+Pengalaman           & 2 (Menengah)                       & 2 (Menengah) \\
+\midrule
+Ketersediaan waktu   & Senin malam, Rabu sore             & Senin malam, Sabtu pagi \\
+\midrule
+Preferensi peran     & Developer                          & Developer, Designer \\
+\end{longtable}
+
+Sebelum skor dihitung, fungsi \texttt{IsEligible} memeriksa ketersediaan waktu: mahasiswa tersedia Senin malam dan Rabu sore, sedangkan kegiatan membutuhkan Senin malam atau Sabtu pagi. Karena terdapat irisan (Senin malam), mahasiswa dinyatakan \emph{eligible} dan perhitungan skor dilanjutkan.
+
+\begin{longtable}{p{0.32\textwidth} p{0.13\textwidth} p{0.13\textwidth} p{0.25\textwidth}}
+\caption{Hasil Perhitungan Skor AffinityEngine} \label{tab:b-contoh-skor} \\
+\toprule
+\textbf{Atribut} & \textbf{Skor} & \textbf{Bobot} & \textbf{Kontribusi} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{c}{\parbox{0.88\textwidth}{\centering \tablename\ \thetable\ Hasil Perhitungan Skor (lanjutan)}} \\
+\toprule
+\textbf{Atribut} & \textbf{Skor} & \textbf{Bobot} & \textbf{Kontribusi} \\
+\midrule
+\endhead
+\multicolumn{4}{r}{\textit{Bersambung ke halaman berikutnya.}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\emph{Skill}                            & 1{,}000          & 0{,}75  & 0{,}750 \\
+\midrule
+Pengalaman                             & 1{,}000          & 0{,}25  & 0{,}250 \\
+\midrule
+\textbf{SkorAlgoritma1}                & \textbf{1{,}000} & {--}    & {--} \\
+\midrule
+\textit{× bobot Algoritma1}            & {--}             & 0{,}5   & \textbf{0{,}500} \\
+\midrule
+Minat                                  & 0{,}667          & 0{,}611 & 0{,}408 \\
+\midrule
+Gaya kerja                             & 1{,}000          & 0{,}194 & 0{,}194 \\
+\midrule
+Preferensi peran                       & 1{,}000          & 0{,}194 & 0{,}194 \\
+\midrule
+\textbf{SkorAlgoritma2}                & \textbf{0{,}796} & {--}    & {--} \\
+\midrule
+\textit{× bobot Algoritma2}            & {--}             & 0{,}5   & \textbf{0{,}398} \\
+\midrule
+\textbf{AffinityScore Total}           & {--}             & {--}    & \textbf{0{,}898} \\
+\end{longtable}
+
+Kolom Kontribusi pada baris atribut menunjukkan hasil Skor × Bobot internal atribut tersebut di dalam sub-algoritmanya. Jumlah kontribusi atribut dalam satu sub-algoritma menghasilkan SkorAlgoritma ($0{,}750 + 0{,}250 = 1{,}000$ untuk Algoritma 1; $0{,}408 + 0{,}194 + 0{,}194 = 0{,}796$ untuk Algoritma 2). Baris \textit{× bobot ke AffinityScore} menampilkan perkalian bobot setara 0,5 dari masing-masing SkorAlgoritma ke AffinityScore akhir (kombinasi 50:50 antara kedua algoritma). Pada contoh ini, \emph{skill} mahasiswa mencakup seluruh kebutuhan kegiatan sehingga skor \emph{coverage} bernilai penuh, minat hanya mencakup dua dari tiga tag kegiatan sehingga skornya $2/3 \approx 0{,}667$, sedangkan gaya kerja dan preferensi peran seluruhnya cocok. AffinityScore sebesar 0,898 (89,8\%) melampaui ambang batas 30\% dan masuk kategori \emph{badge} \texttt{"hijau"} ($\geq$ 85\%).

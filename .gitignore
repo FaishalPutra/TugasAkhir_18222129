@@ -1,0 +1,20 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.equ
+*.loa
+*.lof
+*.lol
+*.lot
+*.log
+*.out
+*.run.xml
+*.toc
+
+# VS Code
+.vscode/
+
+# Claude
+.claude/

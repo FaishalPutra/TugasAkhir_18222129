@@ -1,0 +1,381 @@
+% ==========================================
+% BAB VI EVALUASI
+% ==========================================
+\cleardoublepage
+\chapter{EVALUASI}
+\label{chap:evaluasi}
+
+% ==========================================
+\section{Metode Evaluasi}
+
+Evaluasi dilakukan untuk memastikan bahwa modul \emph{People-to-Project} yang dikembangkan telah berjalan sesuai rancangan, menghasilkan perhitungan algoritma yang konsisten, serta dapat diterima oleh pengguna akhir. Evaluasi pada penelitian ini dibagi menjadi dua jenis, yaitu evaluasi internal dan evaluasi eksternal.
+
+Evaluasi internal dilakukan oleh pengembang untuk memeriksa kesesuaian sistem terhadap kebutuhan dan rancangan yang telah ditetapkan. Evaluasi internal terdiri dari dua bagian, yaitu pengujian fungsional menggunakan metode \emph{black-box testing} dan evaluasi algoritma \emph{Affinity Matching}. \emph{Black-box testing} digunakan untuk menguji apakah setiap fungsi pada \emph{use case} berjalan sesuai masukan dan keluaran yang diharapkan. Sementara itu, evaluasi algoritma digunakan untuk memastikan bahwa perhitungan \emph{People-to-Project Affinity} menghasilkan skor yang sesuai dengan rancangan perhitungan.
+
+Evaluasi eksternal dilakukan dengan melibatkan mahasiswa sebagai pengguna utama sistem. Evaluasi ini dilakukan untuk mengetahui persepsi pengguna terhadap kemudahan penggunaan sistem dan tingkat penerimaan pengguna terhadap fitur-fitur utama modul. Evaluasi eksternal menggunakan dua instrumen, yaitu \emph{System Usability Scale} (SUS) dan \emph{User Acceptance Test} (UAT). SUS digunakan untuk menilai kemudahan penggunaan sistem secara umum, sedangkan UAT digunakan untuk menilai penerimaan pengguna terhadap fitur-fitur utama modul \emph{People-to-Project}.
+
+Ringkasan keseluruhan metode evaluasi yang digunakan dalam penelitian ini disajikan pada Tabel~\ref{tab:metode-evaluasi}.
+
+\begin{table}[H]
+  \caption{Metode Evaluasi}
+  \label{tab:metode-evaluasi}
+  \begin{tabularx}{\textwidth}{p{2.5cm} p{3.5cm} p{4cm} X}
+    \toprule
+    \textbf{Jenis Evaluasi} & \textbf{Metode} & \textbf{Fokus Pengujian} & \textbf{Penguji/Responden} \\
+    \midrule
+    Evaluasi internal & \emph{Black-box testing} & Kesesuaian fungsi sistem terhadap \emph{use case} & Pengembang \\
+    \midrule
+    Evaluasi internal & Evaluasi algoritma \emph{Affinity Matching} & Kebenaran perhitungan, konsistensi skor, batas nilai, dan pembaruan skor & Pengembang \\
+    \midrule
+    Evaluasi eksternal & SUS & Kemudahan penggunaan sistem secara umum & Mahasiswa \\
+    \midrule
+    Evaluasi eksternal & UAT & Penerimaan pengguna terhadap fitur utama modul & Mahasiswa \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Evaluasi Fungsional dengan \emph{Black-box Testing}}
+\label{subsec:blackbox}
+
+Evaluasi fungsional dilakukan menggunakan metode \emph{black-box testing}. Metode ini digunakan karena pengujian difokuskan pada kesesuaian masukan dan keluaran sistem, bukan pada struktur internal kode program. Setiap fitur diuji berdasarkan \emph{use case} yang telah dirancang pada Bab~IV. Pengujian dilakukan melalui skenario normal dan skenario alternatif. Skenario normal digunakan untuk memastikan sistem berjalan sesuai alur utama, sedangkan skenario alternatif digunakan untuk memastikan sistem dapat menangani kondisi gagal atau kondisi khusus. Rincian skenario pengujian untuk setiap \emph{use case} ditunjukkan pada Tabel~\ref{tab:skenario-blackbox} berikut.
+
+\begin{longtable}{p{1.5cm} p{5cm} >{\raggedright\arraybackslash}p{\dimexpr\linewidth-6.5cm-6\tabcolsep\relax}}
+  \caption{Skenario Pengujian \emph{Black-box Testing}}
+  \label{tab:skenario-blackbox} \\
+  \toprule
+    \textbf{Kode Uji} & \textbf{\emph{Use Case}} & \textbf{Skenario yang Diuji} \\
+  \midrule
+  \endfirsthead
+  \multicolumn{3}{l}{\small\textit{Tabel~\ref{tab:skenario-blackbox} Skenario Pengujian \emph{Black-box Testing} (lanjutan)}} \\
+  \toprule
+    \textbf{Kode Uji} & \textbf{\emph{Use Case}} & \textbf{Skenario yang Diuji} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \multicolumn{3}{r}{\textit{Bersambung ke halaman berikutnya.}} \\
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  TC01 & UC01 -- \emph{Register} & Pengguna mengisi nama, \emph{email}, \emph{password}, dan konfirmasi \emph{password} dengan data yang valid, lalu menekan tombol \emph{Register}. \\
+  \midrule
+  TC02 & UC01 -- \emph{Register} & Pengguna mendaftar menggunakan alamat \emph{email} yang sudah terdaftar sebelumnya. \\
+  \midrule
+  TC03 & UC02 -- \emph{Login} & Pengguna memasukkan \emph{email} dan kata sandi yang benar, lalu menekan tombol \emph{Login}. \\
+  \midrule
+  TC04 & UC02 -- \emph{Login} & Pengguna memasukkan \emph{email} atau kata sandi yang salah. \\
+  \midrule
+  TC05 & UC03 -- \emph{Logout} & Pengguna menekan menu \emph{logout} saat sedang dalam sesi aktif. \\
+  \midrule
+  TC06 & UC04 -- Mengelola Profil Kolaboratif & Pengguna mengisi atau memperbarui data minat, \emph{skill}, pengalaman, preferensi gaya kerja, dan ketersediaan waktu dengan lengkap, lalu menyimpan. \\
+  \midrule
+  TC07 & UC04 -- Mengelola Profil Kolaboratif & Pengguna menekan tombol simpan tanpa mengisi salah satu \emph{field} wajib pada profil. \\
+  \midrule
+  TC08 & UC05 -- Melakukan Pencocokan Rekomendasi & Mahasiswa telah melengkapi profil kolaboratif dan memicu proses pencocokan rekomendasi. \\
+  \midrule
+  TC09 & UC05 -- Melakukan Pencocokan Rekomendasi & Mahasiswa mencoba melakukan pencocokan rekomendasi ketika profil kolaboratif belum lengkap. \\
+  \midrule
+  TC10 & UC06 -- Melihat \emph{Feed} Rekomendasi Kegiatan & Sistem menampilkan kegiatan yang memiliki \emph{AffinityScore} $\geq$ 30\% pada \emph{feed} rekomendasi. \\
+  \midrule
+  TC11 & UC06 -- Melihat \emph{Feed} Rekomendasi Kegiatan & Sistem tidak menemukan kegiatan yang memenuhi ambang batas \emph{AffinityScore} sebesar 30\%. \\
+  \midrule
+  TC12 & UC07 -- Melihat Detail Kegiatan Kolaboratif & Mahasiswa memilih salah satu kegiatan dari \emph{feed} rekomendasi untuk melihat informasi detail kegiatan. \\
+  \midrule
+  TC13 & UC08 -- Mendaftar ke Kegiatan Kolaboratif & Mahasiswa memilih \emph{role} yang tersedia dan mengajukan pendaftaran ke kegiatan kolaboratif. \\
+  \midrule
+  TC14 & UC08 -- Mendaftar ke Kegiatan Kolaboratif & Mahasiswa mencoba mendaftar ketika slot \emph{role} sudah penuh atau mahasiswa sudah pernah mengajukan pendaftaran sebelumnya. \\
+  \midrule
+  TC15 & UC09 -- Membuat Kegiatan Kolaboratif & Mahasiswa mengisi data kegiatan secara lengkap dan valid, meliputi judul, deskripsi, kategori, \emph{role} yang dibutuhkan, \emph{skill}, kuota, dan \emph{timeline}. \\
+  \midrule
+  TC16 & UC09 -- Membuat Kegiatan Kolaboratif & Mahasiswa mencoba membuat kegiatan dengan data yang tidak valid atau belum lengkap. \\
+  \midrule
+  TC17 & UC10 -- Melihat \emph{List} Pendaftar & Pembuat kegiatan membuka daftar mahasiswa yang telah mengajukan pendaftaran pada kegiatan yang dibuat. \\
+  \midrule
+  TC18 & UC10 -- Melihat \emph{List} Pendaftar & Pembuat kegiatan membuka daftar pendaftar, tetapi belum terdapat mahasiswa yang mendaftar pada kegiatan tersebut. \\
+  \midrule
+  TC19 & UC11 -- Memproses Pendaftaran & Pembuat kegiatan menerima pendaftaran mahasiswa yang mengajukan diri pada kegiatan. \\
+  \midrule
+  TC20 & UC11 -- Memproses Pendaftaran & Pembuat kegiatan menolak pendaftaran mahasiswa yang mengajukan diri pada kegiatan. \\
+\end{longtable}
+
+\subsection{Evaluasi Algoritma \emph{Affinity Matching}}
+\label{subsec:eval-algoritma}
+
+Evaluasi algoritma dilakukan untuk memastikan bahwa mekanisme \emph{AffinityEngine} pada modul \emph{People-to-Project} menghasilkan skor yang sesuai dengan rancangan perhitungan pada Subbab~IV.3. Evaluasi ini tidak bertujuan mengukur akurasi prediktif sebagaimana model \emph{machine learning}, karena \emph{AffinityEngine} bersifat \emph{knowledge-based} dan berbasis pembobotan atribut (ROC). Evaluasi difokuskan pada validasi logika perhitungan, konsistensi hasil, batas nilai keluaran, dan kewajaran perubahan skor ketika masukan berubah.
+
+Evaluasi algoritma dilakukan terhadap komponen SkorAlgoritma1 (\emph{Demands--Abilities}: \emph{skill} dan pengalaman), SkorAlgoritma2 (\emph{Needs--Supplies}: minat, gaya kerja, preferensi peran), \emph{AffinityScore} akhir, mekanisme \emph{threshold} 30\%, \emph{badge} tiga tingkat, serta transparansi \emph{breakdown} kontribusi atribut. Setiap data uji dihitung secara manual lalu dibandingkan dengan hasil perhitungan sistem. Skenario pengujian untuk setiap komponen algoritma dirangkum pada Tabel~\ref{tab:skenario-algoritma} berikut.
+
+\begin{longtable}{p{1.5cm} p{4.5cm} >{\raggedright\arraybackslash}p{\dimexpr\linewidth-6cm-6\tabcolsep\relax}}
+  \caption{Skenario Evaluasi Algoritma \emph{AffinityEngine}}
+  \label{tab:skenario-algoritma} \\
+  \toprule
+    \textbf{Kode Uji} & \textbf{Komponen} & \textbf{Skenario Pengujian} \\
+  \midrule
+  \endfirsthead
+  \multicolumn{3}{l}{\small\textit{Tabel~\ref{tab:skenario-algoritma} Skenario Evaluasi Algoritma \emph{AffinityEngine} (lanjutan)}} \\
+  \toprule
+    \textbf{Kode Uji} & \textbf{Komponen} & \textbf{Skenario Pengujian} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \multicolumn{3}{r}{\textit{Bersambung ke halaman berikutnya.}} \\
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  AL01 & SkorSkill & Tag \emph{skill} mahasiswa banyak beririsan dengan tag \emph{skill} yang dibutuhkan kegiatan. \\
+  \midrule
+  AL02 & SkorSkill & Tag \emph{skill} mahasiswa sedikit atau tidak beririsan dengan yang dibutuhkan kegiatan. \\
+  \midrule
+  AL03 & SkorPengalaman & Tingkat pengalaman mahasiswa sama dengan tingkat yang dibutuhkan kegiatan. \\
+  \midrule
+  AL04 & SkorPengalaman & Level pengalaman mahasiswa berselisih 1--2 tingkat dari yang dibutuhkan. \\
+  \midrule
+  AL05 & SkorAlgoritma1 & SkorSkill dan SkorPengalaman telah diketahui, hitung SkorAlgoritma1 gabungan. \\
+  \midrule
+  AL06 & SkorMinat & Tag minat mahasiswa banyak beririsan dengan tag minat kegiatan. \\
+  \midrule
+  AL07 & SkorGayaKerja & Gaya kerja mahasiswa sama dengan preferensi gaya kerja kegiatan. \\
+  \midrule
+  AL08 & SkorPeran & Preferensi peran mahasiswa termasuk dalam himpunan peran yang dibutuhkan kegiatan. \\
+  \midrule
+  AL09 & SkorAlgoritma2 & SkorMinat, SkorGayaKerja, dan SkorPeran telah diketahui, hitung SkorAlgoritma2 gabungan. \\
+  \midrule
+  AL10 & \emph{Breakdown} kontribusi atribut & \emph{AffinityScore} telah dihitung, verifikasi rincian kontribusi atribut. \\
+  \midrule
+  AL11 & \emph{Threshold} 30\% & Kegiatan memiliki \emph{AffinityScore} $<$ 30\% setelah lolos kendala keras. \\
+  \midrule
+  AL12 & Perangkingan \emph{feed} & Beberapa kegiatan dengan \emph{AffinityScore} berbeda dihitung untuk profil yang sama. \\
+  \midrule
+  AL13 & Konsistensi algoritma & Profil dan kegiatan yang sama dihitung berulang untuk memvalidasi konsistensi skor. \\
+  \midrule
+  AL14 & Pembaruan skor & Profil mahasiswa diperbarui (\emph{skill}, minat, atau pengalaman berubah), hitung ulang skor. \\
+\end{longtable}
+
+Meskipun kebutuhan nonfungsional tidak diuji sebagai subbab evaluasi tersendiri, sebagian unsurnya terjawab secara tidak langsung melalui rangkaian pengujian di atas. Unsur \emph{usability} (NFR01) terjawab melalui SUS pada Subbab~\ref{subsec:sus}, yang secara khusus dirancang untuk mengukur persepsi kemudahan penggunaan. Unsur \emph{reliability} (NFR02) dan \emph{performance} (NFR04) terjawab melalui AL13 dan AL14 pada Tabel~\ref{tab:skenario-algoritma}, yang memvalidasi kestabilan skor terhadap masukan yang identik maupun perubahan masukan yang wajar. Sementara itu, pengujian \emph{black-box} terhadap alur registrasi, \emph{login}, dan \emph{logout} (TC01--TC05) memberikan indikasi awal bahwa mekanisme autentikasi dasar berjalan sesuai rancangan, meskipun pengujian ini tidak dirancang sebagai pengujian keamanan formal terhadap ancaman siber sehingga belum dapat dijadikan bukti pemenuhan NFR03 (\emph{Security}) secara menyeluruh.
+
+\subsection{Evaluasi Eksternal dengan \emph{System Usability Scale} (SUS)}
+\label{subsec:sus}
+
+\emph{System Usability Scale} (SUS) digunakan untuk mengukur persepsi pengguna terhadap kemudahan penggunaan aplikasi kolaborasi mahasiswa secara umum. Instrumen ini terdiri dari sepuluh pernyataan dengan skala Likert 1 sampai 5, yaitu 1 untuk sangat tidak setuju dan 5 untuk sangat setuju. SUS dipilih karena memberikan ukuran ringkas dan terstandar mengenai apakah sistem mudah dipahami, konsisten, dan nyaman digunakan.
+
+Modul \emph{People-to-Project} merupakan bagian dari satu aplikasi yang dikembangkan bersama, dan pengguna mengalami kemudahan penggunaan pada tingkat aplikasi secara keseluruhan sehingga SUS dilakukan pada tingkat sistem. Subjek penilaian pada setiap pernyataan mengacu pada aplikasi secara keseluruhan, bukan pada satu modul tertentu sehingga instrumen ini digunakan bersama oleh seluruh anggota tim pengembang. Pemisahan SUS per modul dinilai kurang tepat karena responden menilai antarmuka dan alur yang sama. Daftar pernyataan SUS yang digunakan ditunjukkan pada Tabel~\ref{tab:pernyataan-sus} berikut.
+
+\begin{table}[H]
+  \caption{Pernyataan \emph{System Usability Scale}}
+  \label{tab:pernyataan-sus}
+  \begin{tabularx}{\textwidth}{p{1cm} X}
+    \toprule
+    \textbf{No.} & \textbf{Pernyataan} \\
+    \midrule
+    1 & Saya merasa akan sering menggunakan sistem aplikasi kolaborasi ini ketika ingin mencari atau membentuk tim. \\
+    \midrule
+    2 & Saya merasa sistem aplikasi kolaborasi ini terlalu rumit untuk digunakan. \\
+    \midrule
+    3 & Saya merasa sistem aplikasi kolaborasi ini mudah digunakan. \\
+    \midrule
+    4 & Saya merasa membutuhkan bantuan orang lain untuk dapat menggunakan sistem ini. \\
+    \midrule
+    5 & Saya merasa fitur-fitur dalam sistem ini terintegrasi dengan baik. \\
+    \midrule
+    6 & Saya merasa terdapat terlalu banyak ketidakkonsistenan dalam sistem ini. \\
+    \midrule
+    7 & Saya merasa sebagian besar mahasiswa akan cepat memahami cara menggunakan sistem ini. \\
+    \midrule
+    8 & Saya merasa sistem ini membingungkan untuk digunakan. \\
+    \midrule
+    9 & Saya merasa percaya diri saat menggunakan sistem ini. \\
+    \midrule
+    10 & Saya perlu mempelajari banyak hal terlebih dahulu sebelum dapat menggunakan sistem ini. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\subsection{Evaluasi Eksternal dengan \emph{User Acceptance Test} (UAT)}
+\label{subsec:uat}
+
+UAT digunakan untuk mengetahui apakah fitur-fitur utama modul \emph{People-to-Project} dapat diterima oleh pengguna dan sudah sesuai dengan kebutuhan pembentukan tim mahasiswa. Berbeda dari SUS yang menilai kegunaan sistem secara umum, UAT difokuskan pada penerimaan pengguna terhadap fitur tertentu modul.
+
+Responden diminta mencoba skenario penggunaan utama terlebih dahulu, kemudian memberikan penilaian terhadap pernyataan UAT menggunakan skala Likert 1 sampai 5 sebagaimana disajikan pada Tabel~\ref{tab:pernyataan-uat} berikut.
+
+\begin{table}[H]
+  \caption{Pernyataan \emph{User Acceptance Test}}
+  \label{tab:pernyataan-uat}
+  \begin{tabularx}{\textwidth}{p{0.5cm} p{3.5cm} X}
+    \toprule
+    \textbf{No.} & \textbf{Aspek yang Dinilai} & \textbf{Pernyataan} \\
+    \midrule
+    1 & Pengelolaan profil kolaboratif & Sistem membantu saya mengisi dan memperbarui profil kolaboratif, meliputi minat, \emph{skill}, pengalaman, gaya kerja, dan preferensi peran. \\
+    \midrule
+    2 & \emph{Feed} rekomendasi kegiatan & Sistem membantu saya menemukan kegiatan kolaboratif yang sesuai dengan profil saya. \\
+    \midrule
+    3 & \emph{Badge} kecocokan & \emph{Badge} tingkat kecocokan, yaitu hijau, kuning, dan abu-abu, membantu saya menilai relevansi suatu kegiatan secara cepat. \\
+    \midrule
+    4 & \emph{Breakdown} kontribusi atribut & Rincian kontribusi atribut dalam bentuk \emph{chip} membantu saya memahami alasan suatu kegiatan direkomendasikan. \\
+    \midrule
+    5 & Detail kegiatan kolaboratif & Informasi detail kegiatan, seperti deskripsi, \emph{role} yang dibutuhkan, kuota, dan \emph{timeline}, mudah dipahami. \\
+    \midrule
+    6 & Pendaftaran ke kegiatan & Proses mengajukan pendaftaran ke kegiatan kolaboratif mudah dilakukan. \\
+    \midrule
+    7 & Pembuatan kegiatan & Fitur membuat kegiatan baru membantu pengguna yang ingin mencari anggota atau kolaborator. \\
+    \midrule
+    8 & Pengelolaan pendaftar & Fitur melihat dan memproses pendaftar membantu pembuat kegiatan mengelola calon anggota. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% ==========================================
+\section{Hasil Evaluasi}
+
+\subsection{Hasil Evaluasi Internal}
+
+Ringkasan hasil evaluasi internal yang mencakup \emph{black-box testing} dan evaluasi algoritma terdapat pada Tabel~\ref{tab:hasil-internal}. Rincian lengkap mengenai hasil uji dan perbandingan terhadap keluaran yang diharapkan terdapat pada Lampiran~XX.
+
+\begin{table}[H]
+  \caption{Rekapitulasi Hasil Evaluasi Internal}
+  \label{tab:hasil-internal}
+  \begin{tabularx}{\textwidth}{p{4.5cm} p{1.5cm} p{1.5cm} p{3cm} X}
+    \toprule
+    \textbf{Jenis Pengujian} & \textbf{Jumlah Skenario} & \textbf{Berhasil} & \textbf{Berhasil dengan Catatan} & \textbf{Gagal} \\
+    \midrule
+    \emph{Black-box testing} & 20 & 18 & 2 & 0 \\
+    \midrule
+    Evaluasi algoritma \emph{Affinity Matching} & 14 & 14 & 0 & 0 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Pengujian \emph{black-box} terhadap 20 skenario menghasilkan 18 skenario Berhasil, 2 Berhasil dengan Catatan, dan tidak ditemukan skenario yang Gagal. Kedua skenario yang Berhasil dengan Catatan terjadi pada pembuatan kegiatan kolaboratif (TC15 dan TC16). Fungsionalitas inti beserta validasinya terbukti berjalan benar, namun \emph{field} ``kategori'' yang tercantum pada rancangan skenario telah digantikan mekanisme deteksi ikon otomatis berdasarkan kata kunci pada judul kegiatan dalam implementasi saat ini. Evaluasi algoritma terhadap 14 skenario menghasilkan seluruhnya Berhasil, dengan nilai hasil sistem sama persis dengan hasil perhitungan manual pada setiap komponen yang diuji. Secara keseluruhan, hasil ini menunjukkan bahwa seluruh fungsi dan algoritma modul \emph{People-to-Project} telah berjalan sesuai spesifikasi, dengan satu penyesuaian implementasi yang bersifat teknis dan tidak memengaruhi kebenaran perhitungan \emph{AffinityScore}.
+
+\subsection{Hasil Evaluasi Eksternal}
+
+Ringkasan hasil evaluasi eksternal yang mencakup SUS dan UAT disajikan pada Tabel~\ref{tab:hasil-sus} dan Tabel~\ref{tab:hasil-uat} berikut. Rincian mengenai proses perhitungan dan data pengujian lengkap terdapat pada Lampiran~XX. Hasil evaluasi pada kedua tabel tersebut merepresentasikan pemenuhan kebutuhan nonfungsional \emph{Usability}. Skor SUS mencerminkan persepsi kemudahan penggunaan sistem secara kuantitatif, sementara UAT menunjukkan bahwa pengguna dapat memahami dan menyelesaikan alur penggunaan sistem.
+
+\begin{table}[H]
+  \caption{Rekapitulasi Hasil \emph{System Usability Scale}}
+  \label{tab:hasil-sus}
+  \begin{tabularx}{\textwidth}{p{2cm} p{3cm} p{2.5cm} X}
+    \toprule
+    \textbf{Jumlah Responden} & \textbf{Rata-rata Skor SUS} & \textbf{Interpretasi} & \textbf{Keterangan} \\
+    \midrule
+    10 & 61{,}25 dari 100 & Cukup / \emph{marginal low} & Sistem telah memenuhi tingkat kegunaan dasar, namun masih memerlukan penyempurnaan pada beberapa aspek pengalaman pengguna. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Berdasarkan Tabel~\ref{tab:hasil-sus}, pengujian SUS yang melibatkan 10 responden menghasilkan rata-rata skor sebesar 61{,}25 dari 100, yang berada pada interpretasi cukup atau \emph{marginal low}. Skor ini menunjukkan bahwa aplikasi secara umum telah memenuhi tingkat kegunaan dasar, dalam arti pengguna tetap dapat menyelesaikan alur utama seperti pengisian profil, pencarian proyek atau lomba, hingga pembentukan tim, namun pengalaman yang dirasakan belum cukup lancar untuk dikategorikan baik atau sangat baik.
+
+Skor yang berada di ambang batas bawah kategori cukup ini sejalan dengan temuan kualitatif yang diperoleh dari sesi pengujian. Sebagian besar catatan pengguna tidak menunjuk pada kegagalan fungsi, melainkan pada beban kognitif saat memahami informasi yang ditampilkan sistem secara cepat. Pengguna cenderung kesulitan memahami dasar atau alasan suatu kecocokan ditampilkan, baik pada modul \emph{People-to-People}, \emph{People-to-Project}, maupun \emph{Team Formation}, karena keterangan kecocokan umumnya hanya ditampilkan sebagai angka atau label singkat tanpa penjelasan yang memadai. Keterhubungan antarfitur serta penempatan dan pengemasan elemen antarmuka juga belum sepenuhnya konsisten, misalnya porsi informasi yang tidak seimbang, dengan beberapa halaman terlalu minim (deskripsi proyek, detail \emph{role}) dan halaman lain justru berlebihan (detail proyek, daftar proyek). Kombinasi hal-hal tersebut membuat pengguna perlu berpikir atau bertanya lebih dulu sebelum dapat menggunakan fitur secara mandiri, yang pada akhirnya menurunkan persepsi kemudahan penggunaan meskipun fungsi sistem berjalan sesuai rancangan.
+
+Di sisi lain, sebagian responden menilai bahwa alur pencocokan tim dan penjelasan hasilnya sudah cukup ringkas dan mudah dipahami secara umum. Temuan ini menunjukkan bahwa masalah \emph{usability} yang muncul lebih berkaitan dengan detail penyajian informasi dan konsistensi antarmuka, bukan pada konsep dasar sistem.
+
+\begin{table}[H]
+  \caption{Rekapitulasi Hasil \emph{User Acceptance Test}}
+  \label{tab:hasil-uat}
+  \begin{tabularx}{\textwidth}{p{3.5cm} p{1.5cm} p{1.5cm} X}
+    \toprule
+    \textbf{Kategori Penerimaan} & \textbf{Jumlah Aspek} & \textbf{Persentase} & \textbf{Aspek yang Dinilai} \\
+    \midrule
+    Sangat Diterima & 2 & 25\% & \emph{Badge} Kecocokan, Pendaftaran Kegiatan \\
+    \midrule
+    Diterima & 6 & 75\% & Pengelolaan profil kolaboratif, \emph{Feed} rekomendasi kegiatan, \emph{Breakdown} kontribusi atribut, Detail kegiatan kolaboratif, Pembuatan kegiatan, Pengelolaan pendaftar \\
+    \midrule
+    Cukup Diterima & 0 & 0\% & --- \\
+    \midrule
+    Tidak Diterima & 0 & 0\% & --- \\
+    \midrule
+    Sangat Tidak Diterima & 0 & 0\% & --- \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Berdasarkan Tabel~\ref{tab:hasil-uat}, dari 8 aspek penilaian yang diujikan pada instrumen UAT, seluruh aspek (100\%) berada pada kategori Diterima atau Sangat Diterima, dengan rincian 2 aspek (25\%) berada pada kategori Sangat Diterima dan 6 aspek (75\%) berada pada kategori Diterima. Tidak ditemukan aspek yang berada pada kategori Cukup Diterima, Tidak Diterima, maupun Sangat Tidak Diterima. Hasil ini menunjukkan bahwa seluruh fitur utama pada modul \emph{People-to-Project}, mulai dari pengelolaan profil kolaboratif, \emph{feed} rekomendasi kegiatan, \emph{breakdown} kontribusi atribut, detail kegiatan kolaboratif, hingga alur pendaftaran dan pengelolaan pendaftar, telah dapat diterima oleh pengguna sebagai solusi yang sesuai dengan kebutuhan mahasiswa dalam mencari kegiatan kolaboratif.
+
+Aspek yang berada pada kategori Sangat Diterima adalah \emph{badge} kecocokan dan pendaftaran kegiatan. \emph{Badge} kecocokan, yang menyajikan tingkat kesesuaian secara ringkas melalui warna (hijau, kuning, abu-abu), dinilai pengguna sebagai cara yang efektif untuk menilai relevansi suatu kegiatan secara cepat tanpa perlu memahami detail perhitungan di baliknya. Sementara itu, \emph{feed} rekomendasi kegiatan dan \emph{breakdown} kontribusi atribut yang menyajikan hasil pencocokan secara lebih menyeluruh dan rinci berada pada kategori Diterima, sedikit di bawah \emph{badge} kecocokan. Pola ini mengindikasikan bahwa representasi ringkas (\emph{badge}) lebih mudah dipahami dan diapresiasi pengguna dibandingkan penyajian rinci (\emph{breakdown} per atribut), meskipun keduanya berasal dari mekanisme \emph{AffinityEngine} yang sama. Dengan kata lain, kekuatan modul ini terletak pada kemampuannya menyederhanakan hasil pencocokan yang kompleks menjadi sinyal visual yang cepat dipahami, sementara penyajian rincian pendukungnya (\emph{chip breakdown}) masih memiliki ruang untuk disempurnakan agar dapat mencapai tingkat penerimaan yang sama tingginya.
+
+Secara keseluruhan, hasil UAT menunjukkan bahwa pendekatan solusi yang dirancang, mulai dari mekanisme pencocokan berbasis \emph{AffinityEngine} hingga alur pendaftaran dan pengelolaan kegiatan kolaboratif, telah dapat diterima dengan sangat baik oleh pengguna dan dinilai mampu menjawab kebutuhan utama mahasiswa dalam menemukan kegiatan yang sesuai dengan profil mereka.
+
+% ==========================================
+\section{Pembahasan Hasil Evaluasi}
+
+Berdasarkan hasil evaluasi internal dan eksternal, terdapat pola yang saling menguatkan antara pengujian fungsional dan penilaian pengguna terhadap modul \emph{People-to-Project} dan keseluruhan sistem.
+
+Dari sisi kebenaran fungsi dan algoritma, hasil \emph{black-box testing} dan evaluasi algoritma menunjukkan bahwa seluruh skenario telah berjalan sesuai spesifikasi, dengan tingkat keberhasilan 20 dari 20 skenario pada pengujian fungsional (18 Berhasil dan 2 Berhasil dengan Catatan) dan 14 dari 14 skenario pada evaluasi algoritma \emph{AffinityEngine}, tanpa satu pun kegagalan. Catatan yang muncul pada pengujian fungsional bersifat murni teknis, yaitu penyesuaian implementasi \emph{field} ``kategori'' kegiatan yang digantikan mekanisme deteksi ikon otomatis, dan tidak mencerminkan penyimpangan alur atau kegagalan fungsi yang dirasakan pengguna.
+
+Namun, tingkat kebenaran fungsional yang sempurna ini tidak sepenuhnya sejalan dengan persepsi kemudahan penggunaan yang diperoleh dari SUS, yang berada pada kategori cukup atau \emph{marginal low} dengan skor 61{,}25. Temuan kualitatif dari sesi SUS menunjukkan bahwa hambatan yang dirasakan pengguna bukan berasal dari fungsi yang tidak berjalan, melainkan dari beban kognitif saat memahami dasar suatu kecocokan ditampilkan, serta ketidakseimbangan porsi informasi pada beberapa halaman termasuk halaman detail kegiatan yang dinilai terlalu padat informasi. Pola ini selaras dengan hasil UAT. Aspek \emph{breakdown} kontribusi atribut dan \emph{feed} rekomendasi kegiatan berada pada kategori Diterima, sedikit di bawah \emph{badge} kecocokan dan pendaftaran kegiatan yang mencapai Sangat Diterima sehingga kekurangan yang teridentifikasi lebih mengarah pada bagaimana rincian hasil perhitungan dikomunikasikan kepada pengguna, bukan pada ketepatan mekanisme pencocokan itu sendiri.
+
+Berbeda dengan sebagian modul lain pada aplikasi ini yang menemukan titik lemah spesifik pada satu fitur tertentu secara konsisten di seluruh metode evaluasi, modul \emph{People-to-Project} tidak menunjukkan pola serupa. Pengujian fungsional dan algoritma tidak menemukan kegagalan pada fitur mana pun, dan UAT tidak menempatkan satu pun aspek pada kategori Cukup Diterima atau lebih rendah. Titik perbaikan yang teridentifikasi bersifat lintas fitur dan berkaitan dengan kejelasan penyajian informasi secara umum, bukan kegagalan pada satu fitur tunggal.
+
+Secara keseluruhan, hasil evaluasi menunjukkan bahwa pendekatan solusi yang diterapkan pada modul \emph{People-to-Project}, baik dari sisi algoritma \emph{AffinityEngine} maupun alur pencarian dan pendaftaran kegiatan kolaboratif, telah tepat sasaran dan diterima oleh pengguna sebagai jawaban atas kebutuhan pencarian kegiatan kolaboratif mahasiswa. Meski demikian, skor SUS yang masih berada pada kategori cukup menunjukkan bahwa representasi solusi kepada pengguna, terutama dalam penyajian dasar kecocokan dan keseimbangan porsi informasi pada halaman detail kegiatan, masih perlu diperbaiki agar tingkat kegunaan sistem dapat meningkat. Perlu dicatat pula bahwa sistem yang dievaluasi masih berada pada tahap prototipe sehingga kekurangan-kekurangan yang teridentifikasi dapat dijadikan dasar penyempurnaan pada iterasi pengembangan selanjutnya sebelum sistem diimplementasikan secara penuh.
+
+\iffalse
+% ==========================================
+% PANDUAN TEMPLATE (JANGAN DIHAPUS)
+% ==========================================
+\section{Evaluasi Kesalahan Penulisan yang Sering Terjadi}
+\subsection{Penggunaan Kata "di mana" atau "dimana"}
+Banyak yang menuliskan kata "di mana" atau "dimana" sebagai pengganti kata "which" dalam bahasa Inggris.
+Padahal, penggunaan kata "di mana" atau "dimana" tidak tepat dalam konteks tersebut. Demikian juga untuk kata serupa, misalnya "yang mana".
+Kata "di mana" atau "dimana" ini harus diganti dengan kata lain, seperti "dengan", "tempat", "yang", dan sebagainya tergantung kalimatnya.
+Penjelasan lengkap dapat dilihat pada \autocite{BPBI}.
+
+\subsection{Penggunaan Kata "sedangkan" dan "sehingga"}
+
+\begin{table}[t]
+  \begin{tabular}{|c|l|l|}
+  \hline
+  Kata & Salah & Benar \\ \hline
+  sedangkan & \begin{tabular}[c]{@{}c@{}}Sedangkan sistem lama masih\\ digunakan oleh banyak pengguna.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Sistem lama masih digunakan\\ oleh banyak pengguna,\\ sedangkan sistem baru belum siap.\end{tabular} \\ \hline
+  sehingga & \begin{tabular}[c]{@{}c@{}}Sehingga sistem lama masih\\ digunakan oleh banyak pengguna.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Sistem lama masih digunakan\\ oleh banyak pengguna sehingga\\ sistem baru belum siap.\end{tabular} \\ \hline
+  \end{tabular}
+  \caption{Contoh penggunaan kata "sedangkan" dan "sehingga"}
+  \label{tbl:sedangkan_sehingga}
+\end{table}
+
+Kata "sedangkan" dan "sehingga" adalah kata hubung atau konjungsi.
+Konjungsi adalah kata atau ungkapan yang menghubungkan satuan bahasa
+(kata, frasa, klausa, dan kalimat).
+Konjungsi dapat dibagi menjadi konjungsi intrakalimat dan antarkalimat.
+Kata "sedangkan" menghubungkan dua klausa yang bersifat kontrasif,
+sedangkan "sehingga" menghubungkan dua klausa yang bersifat kausal.
+Dalam ragam formal, kata hubung "sedangkan" dan "sehingga" hanya dapat digunakan
+sebagai konjungsi intrakalimat sehingga kedua konjungsi itu \textbf{tidak dapat diletakkan pada awal kalimat}.
+Selain itu, penggunaan kata "sedangkan" harus didahului oleh koma (,), sedangkan kata "sehingga" tidak perlu didahului oleh koma (,).
+Contoh penggunaan yang benar dan salah dapat dilihat pada Tabel \ref{tbl:sedangkan_sehingga}.
+
+
+\subsection{Penggunaan Istilah yang Tidak Baku}
+Ada beberapa istilah yang sering digunakan dalam pembicaraan sehari-hari, tetapi tidak baku dalam penulisan ilmiah.
+Beberapa istilah tersebut antara lain:
+\begin{enumerate}
+  \item analisa $\rightarrow$ analisis
+  \item eksisting atau existing $\rightarrow$ yang ada atau saat ini
+  \item bisnis proses $\rightarrow$ proses bisnis
+  \item user $\rightarrow$ pengguna
+  \item system $\rightarrow$ sistem
+  \item database $\rightarrow$ basis data
+  \item aktifitas $\rightarrow$ aktivitas
+  \item efektifitas $\rightarrow$ efektivitas
+  \item sosial media $\rightarrow$ media sosial
+\end{enumerate}
+
+\subsection{Pemisah Desimal dan Ribuan}
+Tanda pemisah desimal dalam bahasa Indonesia adalah tanda koma, contoh:
+\begin{enumerate}
+  \item (Salah) Akurasi naik menjadi 50.6\%
+  \item (Benar) Akurasi naik menjadi 50,6\%
+\end{enumerate}
+
+\subsection{Daftar atau \textit{List}}
+Ada beberapa aturan penulisan daftar atau \textit{list} yang perlu diperhatikan, antara lain:
+\begin{enumerate}[a)]
+\item Jika memungkinkan, hindari penggunaan "bullet points" atau sejenisnya. Sebaiknya, gunakan angka (1, 2, 3, ...) atau huruf (a, b, c, …). Dengan demikian, pembaca dapat dengan mudah melihat jumlah \textit{item} atau \textit{list}.
+\item Jika dalam daftar hanya ada satu item, tidak perlu menggunakan nomor urut.
+\item Penjelasan atau deskripsi suatu item sebaiknya menyatu dengan judul item tersebut, tidak berbeda halaman. Contoh yang salah: judul item ada di halaman 10, namun deskripsinya di halaman 11. Sebaiknya pindahkan judul tersebut ke halaman 11.
+\item Jika penjelasan atau deskripsi suatu item cukup panjang, misalnya lebih dari 1 halaman atau terdiri atas beberapa paragraf, sebaiknya setiap item tersebut dijadikan judul subbab, kecuali jika level subbab sudah mencapai level 4.
+\end{enumerate}
+
+\subsection{Penggunaan Kata "masing-masing" dan "setiap"}
+Kata "masing-masing" digunakan di belakang kata yang diterangkan, misalnya
+"Setiap proses menggunakan algoritma masing-masing". Kata "tiap-tiap" atau "setiap"
+ditempatkan di depan kata yang diterangkan, misalnya
+"Setiap proses menggunakan algoritma tertentu".
+\fi

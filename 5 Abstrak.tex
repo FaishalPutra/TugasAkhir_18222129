@@ -1,0 +1,23 @@
+\chapter*{ABSTRAK}
+\addcontentsline{toc}{chapter}{ABSTRAK}
+
+\begin{center}
+
+    \textbf{Pengembangan Aplikasi Pencarian Peluang Kolaborasi Mahasiswa: Modul Rekomendasi \emph{People-to-Project} Menggunakan \emph{Affinity Based Matching}} \\
+    \vspace{0.4cm}
+    oleh \\
+    \vspace{0.4cm}
+    Muhammad Faishal Putra\\
+    18222129\\
+\end{center}
+
+
+\begin{spacing}{1.0}
+Pencarian peluang kolaborasi mahasiswa saat ini masih berlangsung secara informal dan bergantung pada jaringan pertemanan pribadi. Survei terhadap 86 responden menunjukkan bahwa 91,8\% mengalami kesulitan menemukan kegiatan kolaboratif yang sesuai pada tingkat sedang hingga tinggi, dan 59,3\% mengandalkan kenalan sebagai sumber informasi utama. Penelitian ini mengembangkan modul rekomendasi \emph{People-to-Project} pada aplikasi kolaborasi mahasiswa beserta mekanisme \emph{Affinity Based Matching} yang menghitung tingkat kecocokan mahasiswa dengan kegiatan kolaboratif berdasarkan atribut profil yang relevan.
+
+Pengembangan dilakukan menggunakan model SDLC \emph{Waterfall} dalam bentuk aplikasi \emph{mobile} Android. Mekanisme pencocokan direalisasikan melalui \emph{AffinityEngine} berbasis \emph{knowledge-based recommender system} yang mengoperasikan dua sub-algoritma: Algoritma 1 (\emph{Demands-Abilities Fit}) untuk kecocokan keterampilan dan pengalaman, serta Algoritma 2 (\emph{Needs-Supplies Fit}) untuk kecocokan minat, gaya kerja, dan preferensi peran. Bobot atribut diturunkan dari data survei menggunakan metode \emph{Rank Order Centroid} (ROC). Ketersediaan waktu diperlakukan sebagai kendala keras yang menyaring kandidat sebelum perhitungan skor dimulai, dan hasil \emph{AffinityScore} disajikan melalui \emph{badge} kecocokan tiga tingkat beserta rincian kontribusi per atribut sebagai bentuk transparansi rekomendasi.
+
+Evaluasi internal terhadap 20 skenario \emph{black-box} mencatat 18 Berhasil dan 2 Berhasil dengan Catatan tanpa kegagalan, sementara 14 skenario evaluasi algoritma seluruhnya Berhasil dengan nilai keluaran identik terhadap perhitungan manual. Evaluasi eksternal melibatkan 10 responden mahasiswa: \emph{User Acceptance Test} (UAT) menunjukkan seluruh 8 aspek fitur utama berada pada kategori Diterima (75\%) atau Sangat Diterima (25\%), sedangkan \emph{System Usability Scale} (SUS) menghasilkan skor rata-rata 61,25 dari 100 dengan interpretasi \emph{marginal low}, mengindikasikan sistem telah memenuhi kegunaan dasar namun masih memerlukan penyempurnaan pada kejelasan penyajian informasi dan konsistensi antarmuka.
+
+Kata kunci: \emph{people-to-project}, \emph{affinity based matching}, sistem rekomendasi, kolaborasi mahasiswa, \emph{knowledge-based recommender system}.
+\end{spacing}
