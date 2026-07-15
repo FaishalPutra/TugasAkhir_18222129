@@ -232,11 +232,15 @@ Bab ini menyajikan landasan teori dan tinjauan pustaka yang menjadi fondasi peng
 
 Mahasiswa merupakan individu yang berada pada fase penting dalam perkembangan akademik dan profesional. Menurut \textcite{dewey1938}, pembelajaran akan menjadi bermakna apabila mahasiswa terlibat langsung dalam aktivitas yang memberikan pengalaman konkret, karena melalui pengalaman tersebut kemampuan berpikir dan pemecahan masalah dapat berkembang secara lebih mendalam. Pandangan ini menjadi dasar mengapa kegiatan kolaboratif seperti proyek, kompetisi, penelitian bersama, dan magang memiliki nilai strategis bagi perkembangan mahasiswa, bukan sekadar pelengkap kurikulum formal.
 
-\textcite{kolb2014} memperkuat argumen ini melalui teori \emph{experiential learning}, yang menjelaskan bahwa mahasiswa mengembangkan pengetahuan secara efektif melalui siklus yang meliputi pengalaman konkret, refleksi, konseptualisasi abstrak, dan eksperimen aktif. Implikasinya, kegiatan kolaboratif yang sesuai dengan kapasitas dan kesiapan mahasiswa akan menghasilkan pengalaman belajar yang lebih bermakna dan berkelanjutan.
+\textcite{kolb2014} memperkuat argumen ini melalui teori \emph{experiential learning} yang menjelaskan bahwa mahasiswa mengembangkan pengetahuan secara efektif melalui siklus yang meliputi pengalaman konkret, refleksi, konseptualisasi abstrak, dan eksperimen aktif. Implikasinya, kegiatan kolaboratif yang sesuai dengan kapasitas dan kesiapan mahasiswa akan menghasilkan pengalaman belajar yang lebih bermakna dan berkelanjutan.
 
 Menurut \textcite{roschelle1995}, kolaborasi merupakan aktivitas terkoordinasi yang muncul dari upaya bersama untuk membangun pemahaman yang selaras terhadap suatu permasalahan. \textcite{dillenbourg1999} menambahkan bahwa kolaborasi terjadi ketika individu bekerja bersama dalam keterlibatan yang saling bergantung untuk mencapai tujuan yang telah disepakati.
 
-Relevansi teori-teori di atas terhadap tugas akhir ini adalah jika pembelajaran yang bermakna membutuhkan kegiatan yang sesuai kapasitas dan minat mahasiswa, maka mekanisme yang membantu mahasiswa menemukan kegiatan kolaboratif yang cocok dengan profil mereka menjadi kebutuhan nyata. Ini menjadi premis utama yang mendasari pengembangan modul \emph{People-to-Project}.
+Namun, akses terhadap banyak pilihan kegiatan yang tidak terstruktur tidak otomatis memudahkan mahasiswa dalam membuat keputusan yang tepat. \textcite{schwartz2004} menjelaskan bahwa ketika individu dihadapkan pada terlalu banyak pilihan tanpa penyaringan yang memadai, mereka cenderung mengalami \emph{choice overload}, yaitu kondisi ketika kelimpahan pilihan justru menghambat pengambilan keputusan dan menurunkan kepuasan terhadap pilihan yang akhirnya dipilih. Dalam konteks mahasiswa yang mencari kegiatan kolaboratif melalui berbagai kanal informal yang tidak terstruktur, kondisi ini berisiko menghasilkan keputusan yang tidak optimal karena informasi tidak dipersonalisasi sesuai profil individu.
+
+Di sisi lain, kemampuan membuat pilihan yang selaras dengan diri sendiri juga bergantung pada kesadaran diri mahasiswa terhadap profil kemampuan dan preferensinya. \textcite{schon1987} menegaskan melalui kerangka \emph{reflective practice} bahwa individu yang mampu merefleksikan kemampuan dan cara kerjanya sendiri dapat membuat pilihan aktivitas yang lebih selaras dengan kapasitas dan tujuan pengembangannya. Tanpa kesadaran diri yang memadai, proses pemilihan kegiatan kolaboratif cenderung bersifat \emph{trial and error} yang tidak efisien dan berisiko menghasilkan ketidakcocokan peran dalam tim.
+
+Relevansi teori-teori di atas terhadap tugas akhir ini adalah jika pembelajaran yang bermakna membutuhkan kegiatan yang sesuai kapasitas dan minat mahasiswa, namun mahasiswa kerap menghadapi kelimpahan informasi yang tidak terstruktur serta keterbatasan kesadaran diri dalam memilih kegiatan, maka mekanisme yang membantu mahasiswa menemukan kegiatan kolaboratif yang cocok dengan profil mereka menjadi kebutuhan nyata. Ini menjadi premis utama yang mendasari pengembangan modul \emph{People-to-Project}.
 
 % --- II.2 Software Development Life Cycle (SDLC) ---
 \section{Software Development Life Cycle (SDLC)}
@@ -253,36 +257,73 @@ Relevansi teori-teori di atas terhadap tugas akhir ini adalah jika pembelajaran 
 
 \textcite{sommerville2016} membedakan dua tingkatan kebutuhan berdasarkan \emph{user requirements} dengan pernyataan dalam bahasa alami yang mendeskripsikan layanan yang diharapkan pengguna dan \emph{system requirements} dengan deskripsi terperinci tentang fungsi dan batasan operasional sistem. Dalam tugas akhir ini, tingkatan tersebut diimplementasikan melalui hierarki tiga lapis yaitu \emph{User Need} (UN), \emph{User Requirement} (UR), dan \emph{Functional Requirement} (FR).
 
-\textcite{sommerville2016} juga membedakan \emph{functional requirements} dan \emph{non-functional requirements}. Pembedaan ini menjadi dasar pengelompokan kebutuhan sistem dalam tugas akhir ini ke dalam FR01--FR14 (fungsional) dan NF01--NF05 (non-fungsional).
+\textcite{sommerville2016} juga membedakan \emph{functional requirements} dan \emph{non-functional requirements}. Pembedaan ini menjadi dasar pengelompokan kebutuhan sistem dalam tugas akhir ini ke dalam FR01--FR14 (fungsional) dan NF01--NF05 (nonfungsional).
 
-% --- II.3 Sistem Rekomendasi dan Pencocokan ---
+% --- II.3 Weighted Scoring Model ---
+\section{\emph{Weighted Scoring Model}}
+
+\emph{Weighted Scoring Model} (WSM) merupakan kerangka pengambilan keputusan multi-kriteria yang mengevaluasi sejumlah alternatif secara kuantitatif berdasarkan seperangkat kriteria yang telah diberi bobot. Menurut \textcite{kumar2022}, WSM bekerja efektif untuk pengambilan keputusan multi-kriteria karena setiap alternatif dievaluasi secara numerik terhadap setiap kriteria yang telah diberi bobot sehingga menghasilkan proses penilaian yang transparan dan dapat direplikasi.
+
+Secara operasional, setiap alternatif diberi nilai pada setiap kriteria dengan skala tertentu, kemudian nilai tersebut dikalikan bobot kriteria yang bersangkutan. Hasil perkalian untuk seluruh kriteria dijumlahkan menjadi satu skor total per alternatif; alternatif dengan skor total tertinggi merupakan pilihan yang direkomendasikan. Pendekatan ini memungkinkan perbandingan yang adil antaralternatif meskipun kriteria memiliki tingkat kepentingan yang berbeda-beda. Dalam tugas akhir ini, WSM diterapkan pada Bab III untuk memilih paradigma sistem rekomendasi yang sesuai dengan karakteristik permasalahan pencarian kegiatan kolaboratif mahasiswa.
+
+% --- II.4 Sistem Rekomendasi dan Pencocokan ---
 \section{Sistem Rekomendasi dan Pencocokan}
 
 Menurut \textcite{ricci2011}, sistem rekomendasi berfungsi sebagai alat pendukung keputusan yang menyaring informasi dan menampilkan pilihan yang paling sesuai bagi pengguna ketika mereka menghadapi banyak opsi. \textcite{burke2002} menjelaskan pencocokan sebagai inti dari sistem rekomendasi karena proses ini menentukan apakah sebuah item relevan bagi profil pengguna.
 
-\subsection{\emph{Person-Job Fit Theory}}
+\subsection{\emph{Person Job Fit Theory}}
 
-Konsep \emph{person-job fit} menjelaskan tingkat kesesuaian antara karakteristik individu dan tuntutan suatu pekerjaan atau aktivitas. Menurut \textcite{kristofbrown2005}, \emph{person-job fit} terjadi ketika kemampuan, keterampilan, minat, serta preferensi individu sejalan dengan kebutuhan, tugas, dan karakteristik suatu pekerjaan. Semakin tinggi tingkat kecocokan ini, semakin besar kemungkinan seseorang akan menunjukkan performa yang baik dan mencapai kepuasan dalam pekerjaannya.
+Konsep \emph{person job fit} menjelaskan tingkat kesesuaian antara karakteristik individu dan tuntutan suatu pekerjaan atau aktivitas. Menurut \textcite{kristofbrown2005}, \emph{person job fit} terjadi ketika kemampuan, keterampilan, minat, serta preferensi individu sejalan dengan kebutuhan, tugas, dan karakteristik suatu pekerjaan. Semakin tinggi tingkat kecocokan ini, semakin besar kemungkinan seseorang akan menunjukkan performa yang baik dan mencapai kepuasan dalam pekerjaannya.
 
-Teori ini secara langsung mendasari desain dimensi pencocokan dalam modul \emph{people to project}. Atribut mahasiswa (minat, keterampilan, preferensi peran, gaya kerja) dipadankan dengan kebutuhan kegiatan kolaboratif secara kuantitatif.
+Teori ini secara langsung mendasari desain dimensi pencocokan dalam modul \emph{People-to-Project}. Atribut mahasiswa (minat, keterampilan, preferensi peran, gaya kerja) dipadankan dengan kebutuhan kegiatan kolaboratif secara kuantitatif.
+
+Dalam penerapannya, \textcite{langgeng2021} merinci dua dimensi kecocokan tersebut secara lebih operasional. \emph{Demands-Abilities Fit} (DA Fit) mengukur sejauh mana kemampuan dan keterampilan teknis individu memenuhi tuntutan suatu aktivitas, sedangkan \emph{Needs-Supplies Fit} (NS Fit) mengukur sejauh mana aktivitas tersebut memenuhi kebutuhan psikologis, minat, dan preferensi individu. Kedua dimensi bersifat komplementer dan tidak dapat saling menggantikan: seseorang dapat memiliki kemampuan teknis yang memadai namun tidak merasa puas apabila minat dan preferensinya tidak terpenuhi, atau sebaliknya.
+
+Selain kemampuan dan minat, kecocokan dalam kegiatan kolaboratif juga dipengaruhi oleh kesesuaian peran dan gaya kerja antaranggota. \textcite{burke2019} menganalisis taksonomi peran fungsional Benne dan Sheats yang mengklasifikasikan peran anggota kelompok ke dalam tiga kelompok besar: \emph{task roles} yang berfokus pada penyelesaian tugas, \emph{building and maintenance roles} yang berfokus pada pemeliharaan dinamika kelompok, dan peran individual. Pemahaman tentang kecenderungan peran menjadi faktor penting dalam menentukan kecocokan antaranggota tim kolaboratif.
+
+Dari sisi gaya kerja, \textcite{stum2009} menjelaskan teori \emph{Adaption-Innovation} Kirton yang menempatkan individu pada spektrum antara dua kutub kognitif: \emph{Adaptor}, yang cenderung bekerja dalam kerangka terstruktur dengan prosedur yang telah ditetapkan, dan \emph{Innovator}, yang lebih nyaman dengan pendekatan terbuka dan eksploratif tanpa batasan prosedural yang ketat. Perbedaan gaya kerja ini secara langsung memengaruhi kenyamanan dan produktivitas kolaborasi sehingga relevan sebagai salah satu dimensi dalam pencocokan kegiatan kolaboratif.
 
 \subsection{Vocational Interests Theory (Holland)}
 
 \textcite{holland1959} menjelaskan bahwa individu memiliki kecenderungan minat dan preferensi aktivitas tertentu yang dapat digunakan untuk memprediksi kecocokan mereka terhadap suatu lingkungan kerja. Model ini dikenal sebagai RIASEC: \emph{Realistic, Investigative, Artistic, Social, Enterprising}, dan \emph{Conventional}. Relevansinya adalah sebagai justifikasi penggunaan \emph{interest type} sebagai salah satu dimensi berbobot dalam mekanisme pencocokan.
 
-\subsection{\emph{Rule-Based Matching}}
+\subsection{Paradigma Sistem Rekomendasi}
 
-Menurut \textcite{jackson1999}, \emph{rule-based matching} adalah sistem berbasis aturan yang bekerja dengan prinsip \emph{if-then rules}. \textcite{burke2002} menjelaskan bahwa pendekatan ini termasuk dalam kategori \emph{knowledge-based recommender systems}. Kelebihannya adalah tingkat interpretabilitas yang tinggi \autocite{russell2010}, namun menjadi kurang fleksibel ketika jumlah aturan meningkat. Keterbatasan ini menjadi motivasi pengembangan \emph{affinity based matching}.
+Sistem rekomendasi dapat dikategorikan ke dalam tiga paradigma utama berdasarkan mekanisme yang digunakan untuk menghasilkan rekomendasi \autocite{ricci2011}. Pemahaman terhadap ketiga paradigma ini menjadi landasan dalam menentukan pendekatan yang paling sesuai untuk diterapkan pada modul \emph{People-to-Project}.
 
-\subsection{Affinity Based Matching}
+\emph{Collaborative Filtering} (CF) merekomendasikan item berdasarkan pola perilaku dan preferensi pengguna lain yang memiliki karakteristik serupa. \textcite{adomavicius2005} menjelaskan bahwa pendekatan ini membutuhkan data historis interaksi pengguna dalam jumlah yang cukup untuk menghasilkan rekomendasi yang akurat sehingga rentan terhadap masalah \emph{cold start} pada platform baru yang belum memiliki data historis memadai.
 
-\emph{Affinity based matching} merupakan pengembangan dari \emph{rule-based matching} yang menambahkan mekanisme penilaian kuantitatif. Pendekatan ini memberikan \emph{affinity score} berupa nilai numerik yang merepresentasikan tingkat kecocokan berdasarkan bobot atribut yang relevan.
+\emph{Content-Based Filtering} (CBF) merekomendasikan item berdasarkan kesamaan antara atribut profil pengguna dan atribut item yang tersedia. Pendekatan ini lebih independen dari riwayat interaksi dibandingkan CF, namun masih memerlukan histori preferensi pengguna untuk membangun representasi profil yang akurat \autocite{ricci2011}.
 
-\textcite{burke2002} menjelaskan bahwa \emph{knowledge-based scoring} dapat diperluas dengan mekanisme pembobotan. \textcite{felfernig2014} menyatakan bahwa rekomendasi dapat dihitung berdasarkan tingkat pemenuhan serangkaian \emph{constraints} berbobot. \textcite{adomavicius2011} memperkuat dasar konseptual ini dengan menekankan bahwa relevansi antara pengguna dan item dapat dievaluasi melalui pendekatan multidimensional yang menggabungkan berbagai atribut dan bobotnya.
+\emph{Knowledge-Based Recommendation} (KBR) merekomendasikan item berdasarkan pengetahuan eksplisit tentang atribut pengguna dan aturan domain, tanpa memerlukan riwayat interaksi. \textcite{burke2002} menjelaskan bahwa pendekatan ini sangat efektif untuk mengatasi masalah \emph{cold start} karena tidak bergantung pada data perilaku historis, melainkan pada spesifikasi kebutuhan dan karakteristik pengguna yang dinyatakan secara eksplisit.
 
-\subsection{Explainability dalam Sistem Rekomendasi}
+\subsection{\emph{Rule Based Matching}}
 
-\textcite{tintarev2007} mendefinisikan \emph{explanation} dalam konteks sistem rekomendasi sebagai fitur yang menjelaskan kepada pengguna mengapa sebuah item tertentu direkomendasikan. \textcite{burke2002} mencatat bahwa \emph{knowledge-based recommender systems} secara inheren memiliki keunggulan interpretabilitas karena keputusan didasarkan pada atribut yang eksplisit.
+Menurut \textcite{jackson1999}, \emph{rule based matching} adalah sistem berbasis aturan yang bekerja dengan prinsip \emph{if-then rules}. \textcite{burke2002} menjelaskan bahwa pendekatan ini termasuk dalam kategori \emph{knowledge based recommender systems}. Kelebihannya adalah tingkat interpretabilitas yang tinggi \autocite{russell2010}, namun menjadi kurang fleksibel ketika jumlah aturan meningkat. Keterbatasan ini menjadi motivasi pengembangan \emph{affinity based matching}.
+
+\subsection{\emph{Affinity Based Matching}}
+
+\emph{Affinity based matching} merupakan pengembangan dari \emph{rule based matching} yang menambahkan mekanisme penilaian kuantitatif. Pendekatan ini memberikan \emph{affinity score} berupa nilai numerik yang merepresentasikan tingkat kecocokan berdasarkan bobot atribut yang relevan.
+
+\textcite{burke2002} menjelaskan bahwa \emph{knowledge based scoring} dapat diperluas dengan mekanisme pembobotan. \textcite{felfernig2014} menyatakan bahwa rekomendasi dapat dihitung berdasarkan tingkat pemenuhan serangkaian \emph{constraints} berbobot. \textcite{adomavicius2011} memperkuat dasar konseptual ini dengan menekankan bahwa relevansi antara pengguna dan item dapat dievaluasi melalui pendekatan multidimensional yang menggabungkan berbagai atribut dan bobotnya. Pendekatan pembobotan multi-atribut ini juga memiliki dukungan empiris: \textcite{sarsenbay2025} menunjukkan bahwa \emph{pipeline} rekomendasi yang menggabungkan beberapa kelompok atribut psikologis dan kompetensi secara berbobot menghasilkan rekomendasi yang lebih \emph{robust} dibandingkan pendekatan atribut tunggal.
+
+\subsection{\emph{Rank Order Centroid}}
+
+\emph{Rank Order Centroid} (ROC) adalah metode \emph{rank-based surrogate weighting} dalam literatur MCDA yang digunakan untuk mengonversi urutan preferensi antaratribut (\emph{ranking}) menjadi bobot kardinal yang dapat langsung digunakan dalam model pembobotan. Metode ini bekerja dengan asumsi bahwa urutan dominasi antaratribut telah diketahui, namun rasio bobot antaratribut belum dapat ditentukan secara tepat melalui instrumen langsung.
+
+\textcite{hatefi2023} menunjukkan melalui simulasi komprehensif bahwa ROC secara konsisten mengungguli metode \emph{rank-based} lain seperti \emph{Rank Sum} dan \emph{Rank Reciprocal} dalam berbagai skenario pengambilan keputusan. Bobot ROC untuk atribut pada peringkat ke-$i$ dari $n$ atribut diformulasikan pada Persamaan~\ref{eq:roc-litrev} berikut.
+
+\begin{equation}
+  w_i = \frac{1}{n} \sum_{k=i}^{n} \frac{1}{k}
+  \label{eq:roc-litrev}
+  \eqcaption{Bobot \emph{Rank Order Centroid} (ROC)}
+\end{equation}
+
+Dengan rumusan ini, atribut pada peringkat tertinggi (peringkat 1) memperoleh bobot terbesar, dan bobot menurun secara konsisten seiring bertambahnya peringkat. Dalam tugas akhir ini, ROC digunakan untuk mengonversi urutan dominasi atribut yang diperoleh dari hasil survei menjadi bobot kardinal yang diterapkan pada kedua sub-algoritma \emph{AffinityEngine}.
+
+\subsection{\emph{Explainability} dalam Sistem Rekomendasi}
+
+\textcite{tintarev2007} mendefinisikan \emph{explanation} dalam konteks sistem rekomendasi sebagai fitur yang menjelaskan kepada pengguna mengapa sebuah item tertentu direkomendasikan. \textcite{burke2002} mencatat bahwa \emph{knowledge based recommender systems} secara inheren memiliki keunggulan interpretabilitas karena keputusan didasarkan pada atribut yang eksplisit.
 
 Dalam sistem yang dikembangkan, \emph{explainability} diimplementasikan melalui FR07, yaitu kemampuan menampilkan \emph{breakdown} skor per dimensi pencocokan (minat, keterampilan, preferensi peran, gaya kerja, dan komitmen waktu) untuk setiap kegiatan yang direkomendasikan.
 

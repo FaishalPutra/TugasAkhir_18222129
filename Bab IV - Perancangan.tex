@@ -12,10 +12,10 @@ penjelasan perbandingannya dengan gambar sistem yang ada saat ini (yang tergamba
 \fi
 
 \cleardoublepage
-\chapter{PERANCANGAN}
+\chapter{PERANCANGAN SISTEM REKOMENDASI MODUL \emph{PEOPLE-TO-PROJECT}}
 \label{chap:perancangan}
 
-\section{Deskripsi \emph{High Level} Sistem}
+\section{Gambaran Umum Sistem}
 
 Bagian ini memaparkan gambaran umum sistem aplikasi kolaborasi mahasiswa secara menyeluruh, mencakup identifikasi aktor yang terlibat, alur kerja sistem, batasan pengembangan, serta pembagian modul antaranggota tim. Deskripsi \emph{high level} ini disusun sebagai fondasi bersama yang menjadi acuan ketiga modul dalam pengembangan sistem, yaitu modul \emph{People-to-People Recommendation}, modul \emph{People-to-Project Matching}, dan modul \emph{Team Formation}. Dengan demikian, pemodelan pada bagian ini menggambarkan komponen-komponen yang digunakan secara bersama oleh seluruh modul sehingga setiap keputusan perancangan pada modul masing-masing dapat dipastikan tetap konsisten, terintegrasi, dan mendukung tujuan pengembangan sistem sebagai satu kesatuan.
 
@@ -99,7 +99,7 @@ Berdasarkan pendekatan tersebut, sistem didekomposisi menjadi tiga fungsi utama,
     3 & Pembentukan tim & Fungsi ini digunakan untuk membentuk komposisi tim dari beberapa pengguna berdasarkan kebutuhan peran, keterampilan, dan kecocokan antaranggota. \\
 \end{longtable}
 
-Setelah fungsi utama sistem berhasil diidentifikasi, langkah berikutnya adalah melakukan dekomposisi lebih lanjut untuk menggambarkan rincian proses yang berada di dalam fungsi masing-masing. Dekomposisi ini bertujuan untuk menunjukkan bagaimana setiap fungsi utama diimplementasikan melalui serangkaian aktivitas yang saling berkaitan. Hasil dekomposisi fungsi tersebut ditunjukkan pada Gambar~\ref{fig:dekomposisi-sistem} berikut.
+Setelah fungsi utama sistem berhasil diidentifikasi langkah berikutnya adalah melakukan dekomposisi lebih lanjut untuk menggambarkan rincian proses yang berada di dalam fungsi masing-masing. Dekomposisi ini bertujuan untuk menunjukkan bagaimana setiap fungsi utama diimplementasikan melalui serangkaian aktivitas yang saling berkaitan. Hasil dekomposisi fungsi tersebut ditunjukkan pada Gambar~\ref{fig:dekomposisi-sistem} berikut.
 
 \begin{figure}[H]
   \centering
@@ -176,11 +176,11 @@ Setiap modul yang terdapat dalam sistem dikerjakan secara kolaboratif dengan pem
     3 & \emph{Team Formation} & Muhammad Faishal Firdaus (18222136) \\
 \end{longtable}
 
-\subsection{Modul Modul \emph{People-to-Project}}
+\subsection{Modul \emph{People-to-Project}}
 
-Modul \emph{People-to-Project} merupakan bagian dari sistem yang berfokus pada proses pencarian dan pencocokan antara mahasiswa dengan kegiatan kolaboratif atau proyek yang tersedia di platform. Modul ini dirancang untuk membantu mahasiswa menemukan kegiatan kolaboratif yang sesuai dengan minat dan kemampuannya, melihat detail kegiatan beserta kebutuhan \emph{role}, mendaftarkan diri pada \emph{role} yang diminati, atau membuat dan mempublikasikan kegiatan kolaboratif baru bagi mahasiswa lain untuk bergabung. Berbeda dari modul \emph{people-to-people} yang berorientasi pada pencarian individu ke individu, modul ini menempatkan kegiatan kolaboratif (\emph{project}) sebagai objek utama yang ditemukan melalui mekanisme \emph{feed} rekomendasi, yaitu tampilan yang menyajikan daftar kegiatan aktif terurut berdasarkan skor kecocokan hasil \emph{affinity based matching} antara profil mahasiswa dan kebutuhan kegiatan.
+Modul \emph{People-to-Project} merupakan bagian dari sistem yang berfokus pada proses pencarian dan pencocokan antara mahasiswa dengan kegiatan kolaboratif atau proyek yang tersedia di platform. Modul ini dirancang untuk membantu mahasiswa menemukan kegiatan kolaboratif yang sesuai dengan minat dan kemampuannya, melihat detail kegiatan beserta kebutuhan \emph{role}, mendaftarkan diri pada \emph{role} yang diminati, atau membuat dan mempublikasikan kegiatan kolaboratif baru bagi mahasiswa lain untuk bergabung. Berbeda dari modul \emph{People-to-People} yang berorientasi pada pencarian individu ke individu, modul ini menempatkan kegiatan kolaboratif (\emph{project}) sebagai objek utama yang ditemukan melalui mekanisme \emph{feed} rekomendasi, yaitu tampilan yang menyajikan daftar kegiatan aktif terurut berdasarkan skor kecocokan hasil \emph{affinity based matching} antara profil mahasiswa dan kebutuhan kegiatan.
 
-Dalam modul ini, pengguna dapat melihat informasi kegiatan, seperti deskripsi, kategori, \emph{timeline}, kebutuhan \emph{role} beserta \emph{skill} yang dicari, dan sisa kuota setiap \emph{role}. Sistem juga mendukung rekomendasi kegiatan berdasarkan profil dan preferensi kolaborasi mahasiswa, serta menampilkan skor kecocokan dan rincian komponen penilaiannya (\emph{affinity score breakdown}) untuk setiap kegiatan yang direkomendasikan. Selama kuota \emph{role} kegiatan belum terpenuhi, mahasiswa dapat mengajukan pendaftaran pada \emph{role} yang diminati, sementara mahasiswa yang berperan sebagai pembuat kegiatan dapat meninjau daftar pendaftar dan menentukan keputusan terima atau tolak untuk setiap pengajuan berdasarkan kesesuaian \emph{role}. Dengan demikian, modul \emph{people-to-project} tidak hanya menyediakan fitur pencarian kegiatan, tetapi juga mendukung proses pendaftaran dan seleksi anggota yang lebih terarah dan berbasis kecocokan.
+Dalam modul ini, pengguna dapat melihat informasi kegiatan, seperti deskripsi, kategori, \emph{timeline}, kebutuhan \emph{role} beserta \emph{skill} yang dicari, dan sisa kuota setiap \emph{role}. Sistem juga mendukung rekomendasi kegiatan berdasarkan profil dan preferensi kolaborasi mahasiswa, serta menampilkan skor kecocokan dan rincian komponen penilaiannya (\emph{affinity score breakdown}) untuk setiap kegiatan yang direkomendasikan. Selama kuota \emph{role} kegiatan belum terpenuhi, mahasiswa dapat mengajukan pendaftaran pada \emph{role} yang diminati, sementara mahasiswa yang berperan sebagai pembuat kegiatan dapat meninjau daftar pendaftar dan menentukan keputusan terima atau tolak untuk setiap pengajuan berdasarkan kesesuaian \emph{role}. Dengan demikian, modul \emph{People-to-Project} tidak hanya menyediakan fitur pencarian kegiatan, tetapi juga mendukung proses pendaftaran dan seleksi anggota yang lebih terarah dan berbasis kecocokan.
 
 \subsection{Aktor Pada Modul}
 
@@ -233,7 +233,7 @@ Modul \emph{People-to-Project Recommendation} menggambarkan alur interaksi pengg
 Alur dimulai ketika pengguna mengakses modul \emph{People-to-Project}. Sistem kemudian memeriksa kelengkapan profil pengguna. Apabila profil belum lengkap, pengguna diarahkan untuk mengisi atau memperbarui profil dan preferensi kolaboratifnya terlebih dahulu sebelum dapat melanjutkan. Proses ini berulang hingga profil dinyatakan lengkap oleh sistem. Setelah profil lengkap, sistem menampilkan \emph{feed} rekomendasi kegiatan kolaboratif yang telah diurutkan berdasarkan skor kecocokan hasil perhitungan \emph{Affinity Based Matching} antara profil mahasiswa dan kebutuhan kegiatan. Pengguna kemudian memilih salah satu kegiatan dari daftar tersebut untuk dilihat detailnya lebih lanjut. Apabila pengguna menilai kegiatan tersebut tidak cocok atau tidak tertarik, pengguna dapat kembali ke \emph{feed} rekomendasi dan memilih kegiatan lain. Apabila pengguna menilai kegiatan tersebut cocok dan tertarik untuk bergabung, pengguna dapat mengajukan pendaftaran pada \emph{role} yang diminati di kegiatan tersebut. Setelah pengajuan pendaftaran diproses dan dikonfirmasi oleh pembuat kegiatan, mahasiswa resmi tergabung dalam kegiatan tersebut dan alur modul selesai.
 
 % ==========================================
-\section{Model Sistem}
+\section{Perancangan Model Sistem}
 
 \subsection{\emph{Use Case} Diagram}
 
@@ -1567,7 +1567,7 @@ Berdasarkan \emph{component diagram} pada Gambar~\ref{fig:component-diagram}, se
   \midrule
   \multicolumn{4}{l}{\textbf{\emph{People-to-Project} ke General Features}} \\
   \midrule
-  Profil (Subsistem General Features), Affinity\hspace{0pt}Engine (Subsistem General Features) & Data Personalisasi \emph{Feed} & Rekomendasi\hspace{0pt}Feed\hspace{0pt}Project & Komponen \emph{feed} proyek membutuhkan informasi dari profil mahasiswa dan \emph{affinity engine} untuk menyaring dan menampilkan rekomendasi proyek yang paling relevan dengan minat atau \emph{skill} pengguna. \\
+  Profil (Subsistem General Features), \emph{AffinityEngine} (Subsistem General Features) & Data Personalisasi \emph{Feed} & Rekomendasi\hspace{0pt}Feed\hspace{0pt}Project & Komponen \emph{feed} proyek membutuhkan informasi dari profil mahasiswa dan \emph{AffinityEngine} untuk menyaring dan menampilkan rekomendasi proyek yang paling relevan dengan minat atau \emph{skill} pengguna. \\
   \midrule
   Profil (Subsistem General Features) & Data Identitas Proyek & Pendaftaran\hspace{0pt}Project, Pembuatan\hspace{0pt}Project & Komponen pendaftaran dan pembuatan proyek membutuhkan data dari komponen profil untuk mengidentifikasi mahasiswa yang bertindak sebagai pembuat (\emph{owner}) proyek maupun yang mendaftar ke proyek tersebut. \\
   \midrule
@@ -1586,9 +1586,9 @@ Berdasarkan \emph{component diagram} pada Gambar~\ref{fig:component-diagram}, se
   \label{fig:deployment-diagram}
 \end{figure}
 
-Sistem terdiri dari tiga \emph{node} utama. \emph{Node} pertama adalah \emph{Mobile Device} (Android) yang menjalankan \emph{artifact} \emph{Flutter App} (.apk), berperan sebagai \emph{presentation layer} yang menangani interaksi pengguna pada modul \emph{People-to-People}, \emph{People-to-Project}, dan \emph{Team Formation} dalam satu basis kode aplikasi. \emph{Node} kedua adalah \emph{Application Server} (Railway) yang menjalankan dua \emph{artifact}: Express.js + Prisma sebagai REST API yang melayani permintaan dari ketiga modul melalui satu \emph{backend} bersama, dan \emph{Affinity Engine} yang memuat logika pembobotan atribut serta perhitungan skor kecocokan yang digunakan bersama oleh ketiga modul, termasuk AffinityScorePeople pada modul ini. \emph{Node} ketiga adalah \emph{Database Server} (Railway) yang menjalankan PostgreSQL Database sebagai satu basis data terpadu yang menyimpan seluruh data sistem, termasuk profil mahasiswa, AffinityScorePeople, RecommendationPeople, SavedProfile, ExpressInterest, ConnectRequest, dan Connection.
+Sistem terdiri dari tiga \emph{node} utama. \emph{Node} pertama adalah \emph{Mobile Device} (Android) yang menjalankan \emph{artifact} \emph{Flutter App} (.apk), berperan sebagai \emph{presentation layer} yang menangani interaksi pengguna pada modul \emph{People-to-People}, \emph{People-to-Project}, dan \emph{Team Formation} dalam satu basis kode aplikasi. \emph{Node} kedua adalah \emph{Application Server} (Railway) yang menjalankan dua \emph{artifact}: Express.js + Prisma sebagai REST API yang melayani permintaan dari ketiga modul melalui satu \emph{backend} bersama, dan \emph{AffinityEngine} yang memuat logika pembobotan atribut serta perhitungan skor kecocokan yang digunakan bersama oleh ketiga modul, termasuk AffinityScorePeople pada modul ini. \emph{Node} ketiga adalah \emph{Database Server} (Railway) yang menjalankan PostgreSQL Database sebagai satu basis data terpadu yang menyimpan seluruh data sistem, termasuk profil mahasiswa, AffinityScorePeople, RecommendationPeople, SavedProfile, ExpressInterest, ConnectRequest, dan Connection.
 
-Komunikasi antara Mobile Device dan Application Server menggunakan protokol HTTPS dengan format data REST API (JSON), sedangkan komunikasi antara Application Server dan Database Server menggunakan protokol TCP/IP dengan SSL melalui Prisma Client (PostgreSQL Wire Protocol). Application Server dan Database Server di-\emph{deploy} sebagai dua \emph{managed service} terpisah pada platform Railway, sejalan dengan praktik pemisahan basis data dari server aplikasi untuk menjaga keamanan dan isolasi data sebagaimana direkomendasikan dalam arsitektur \emph{client-server} \autocite{sommerville2016}.
+Komunikasi antara Mobile Device dan Application Server menggunakan protokol HTTPS dengan format data REST API (JSON), sedangkan komunikasi antara Application Server dan Database Server menggunakan protokol TCP/IP dengan SSL melalui Prisma Client (PostgreSQL Wire Protocol). Application Server dan Database Server di-\emph{deploy} sebagai dua \emph{managed service} terpisah pada platform Railway, sejalan dengan praktik pemisahan basis data dari server aplikasi untuk menjaga keamanan dan isolasi data sebagaimana direkomendasikan dalam arsitektur \emph{client-server} \autocite{sommerville2016}. Rincian \emph{node} dan \emph{artifact} pada \emph{deployment diagram} disajikan pada Tabel~\ref{tab:deployment-nodes}.
 
 \begin{longtable}{p{4cm} p{4cm} >{\raggedright\arraybackslash}p{\dimexpr\linewidth-8cm-6\tabcolsep\relax}}
   \caption{\emph{Node} dan \emph{Artifact} pada \emph{Deployment Diagram}}
@@ -1611,10 +1611,12 @@ Komunikasi antara Mobile Device dan Application Server menggunakan protokol HTTP
     \midrule
     Application Server (Railway) & Express.js + Prisma (REST API) & Menyediakan layanan \emph{backend} dan API untuk seluruh modul sistem. \\
     \midrule
-    Application Server (Railway) & Affinity Engine (Matching Logic) & Menghitung skor kecocokan dan menghasilkan rekomendasi mitra kolaborasi. \\
+    Application Server (Railway) & \emph{AffinityEngine} (\emph{Matching Logic}) & Menghitung skor kecocokan dan menghasilkan rekomendasi mitra kolaborasi. \\
     \midrule
     Database Server (Railway) & PostgreSQL Database & Menyimpan seluruh data aplikasi dan hasil proses pencocokan. \\
 \end{longtable}
+
+Protokol komunikasi yang digunakan antar-\emph{node} disajikan pada Tabel~\ref{tab:deployment-protocols}.
 
 \begin{longtable}{p{3.5cm} p{3.5cm} p{2cm} >{\raggedright\arraybackslash}p{\dimexpr\linewidth-9cm-8\tabcolsep\relax}}
   \caption{Protokol Komunikasi antar-\emph{Node}}
@@ -1649,7 +1651,7 @@ Empat tahap inti tersebut diuraikan sebagai berikut.
 
 \begin{enumerate}
   \item Ekstraksi atribut dengan mengambil nilai atribut relevan dari profil mahasiswa dan kebutuhan kegiatan yang telah lolos tahap penyaringan, agar dapat dibandingkan pada tahap selanjutnya.
-  \item Pembobotan atribut dengan memberikan bobot pada setiap atribut berdasarkan tingkat relevansinya terhadap kecocokan keseluruhan. Berbeda dari model pembobotan tunggal, tahap ini direalisasikan melalui dua sub-algoritma paralel yang merepresentasikan dua jenis \emph{person-environment fit} \autocite{langgeng2021} (dirinci pada subbab IV.3.2).
+  \item Pembobotan atribut dengan memberikan bobot pada setiap atribut berdasarkan tingkat relevansinya terhadap kecocokan keseluruhan. Berbeda dari model pembobotan tunggal, tahap ini direalisasikan melalui dua sub-algoritma paralel yang merepresentasikan dua jenis \emph{person environment fit} \autocite{langgeng2021} (dirinci pada subbab IV.3.2).
   \item Perhitungan skor kecocokan dengan menghitung skor kesamaan untuk setiap atribut secara individual pada sub-algoritma masing-masing, kemudian menggabungkan skor setiap sub-algoritma menjadi satu skor total menggunakan model penjumlahan berbobot (\emph{weighted sum}), dirinci pada subbab IV.3.3 dan IV.3.4.
   \item Perangkingan dan keluaran rekomendasi dengan mengurutkan seluruh kegiatan berdasarkan skor total tertinggi dan menghasilkan daftar rekomendasi yang ditampilkan sebagai \emph{feed} kepada mahasiswa, dengan indikator kecocokan per atribut agar proses rekomendasi tetap transparan dan dapat dipertanggungjawabkan \autocite{tintarev2007}.
 \end{enumerate}
@@ -1657,11 +1659,11 @@ Empat tahap inti tersebut diuraikan sebagai berikut.
 % ==========================================
 \subsection{Atribut dan Pembobotan}
 
-\emph{Person-Job Fit Theory} yang dijelaskan pada subbab II.4.1 membedakan dua jenis kecocokan antara individu dan suatu pekerjaan atau aktivitas \autocite{kristofbrown2005}. Kedua jenis kecocokan tersebut didefinisikan secara lebih spesifik sebagai \emph{Demands-Abilities Fit}, yaitu kesesuaian antara kemampuan individu dan tuntutan tugas, serta \emph{Needs-Supplies Fit}, yaitu kesesuaian antara kebutuhan psikologis individu dan apa yang ditawarkan oleh lingkungan kerja atau aktivitas \autocite{langgeng2021}. Kedua jenis kecocokan ini bersifat saling melengkapi dan tidak dapat saling menggantikan, seseorang dapat memiliki kemampuan teknis yang sesuai dengan tuntutan suatu kegiatan namun tidak menemukan kepuasan jika minat dan preferensinya tidak terpenuhi, atau sebaliknya. Pendekatan pembobotan ganda semacam ini juga sejalan dengan studi terapan terbaru pada rekomendasi berbasis minat dan kepribadian, di antaranya \textcite{sarsenbay2025}, yang menunjukkan bahwa \emph{pipeline} rekomendasi yang menggabungkan beberapa kelompok atribut psikologis dan kompetensi secara berbobot memberikan hasil yang lebih \emph{robust} dibandingkan pendekatan atribut tunggal.
+\emph{Person Job Fit Theory} yang dijelaskan pada subbab II.4.1 membedakan dua jenis kecocokan antara individu dan suatu pekerjaan atau aktivitas \autocite{kristofbrown2005}. Kedua jenis kecocokan tersebut didefinisikan secara lebih spesifik sebagai \emph{Demands-Abilities Fit}, yaitu kesesuaian antara kemampuan individu dan tuntutan tugas, serta \emph{Needs-Supplies Fit}, yaitu kesesuaian antara kebutuhan psikologis individu dan apa yang ditawarkan oleh lingkungan kerja atau aktivitas \autocite{langgeng2021}. Kedua jenis kecocokan ini bersifat saling melengkapi dan tidak dapat saling menggantikan, seseorang dapat memiliki kemampuan teknis yang sesuai dengan tuntutan suatu kegiatan namun tidak menemukan kepuasan jika minat dan preferensinya tidak terpenuhi, atau sebaliknya. Pendekatan pembobotan ganda semacam ini juga sejalan dengan studi terapan terbaru pada rekomendasi berbasis minat dan kepribadian, di antaranya \textcite{sarsenbay2025} yang menunjukkan bahwa \emph{pipeline} rekomendasi yang menggabungkan beberapa kelompok atribut psikologis dan kompetensi secara berbobot memberikan hasil yang lebih \emph{robust} dibandingkan pendekatan atribut tunggal.
 
 Atas dasar tersebut, tahap pembobotan atribut pada \emph{AffinityEngine} direalisasikan melalui dua sub-algoritma yang dihitung secara independen sebelum digabungkan, yaitu Algoritma~1 (\emph{Demands-Abilities Fit}) dan Algoritma~2 (\emph{Needs-Supplies Fit}).
 
-Survei deskriptif terhadap 86 responden mengenai faktor yang dianggap penting dalam menentukan kecocokan kegiatan kolaboratif (lihat subbab III.2) berbentuk pertanyaan \emph{multi-select} sehingga persentase yang dihasilkan hanya mengukur prevalensi opini responden (proporsi responden yang menganggap suatu atribut penting), bukan instrumen pembobotan langsung seperti \emph{constant-sum allocation} atau \emph{pairwise comparison} (Saaty). Persentase tersebut tetap dapat digunakan untuk menetapkan urutan dominasi (\emph{ranking}) antar-atribut secara sah, karena perbandingan prevalensi antarpilihan pada pertanyaan \emph{multi-select} yang sama tetap bermakna sebagai data ordinal, meskipun rasio antar-persentase tersebut tidak dapat diperlakukan sebagai rasio bobot secara langsung.
+Survei deskriptif terhadap 86 responden mengenai faktor yang dianggap penting dalam menentukan kecocokan kegiatan kolaboratif (pada subbab III.2) berbentuk pertanyaan \emph{multi-select} sehingga persentase yang dihasilkan hanya mengukur prevalensi opini responden (proporsi responden yang menganggap suatu atribut penting), bukan instrumen pembobotan langsung seperti \emph{constant-sum allocation} atau \emph{pairwise comparison} (Saaty). Persentase tersebut tetap dapat digunakan untuk menetapkan urutan dominasi (\emph{ranking}) antaratribut secara sah, karena perbandingan prevalensi antarpilihan pada pertanyaan \emph{multi-select} yang sama tetap bermakna sebagai data ordinal, meskipun rasio antarpersentase tersebut tidak dapat diperlakukan sebagai rasio bobot secara langsung.
 
 Untuk mengonversi urutan dominasi tersebut menjadi bobot kardinal secara sah, digunakan metode \emph{rank-based surrogate weighting} yang dikenal pada literatur \emph{multi-criteria decision analysis} (MCDA), yaitu \emph{Rank Order Centroid} (ROC). Metode ini dipilih karena terbukti secara empiris mengungguli metode \emph{rank-based} lain seperti \emph{Rank Sum} dan \emph{Rank Reciprocal} secara konsisten dalam berbagai skenario simulasi \autocite{hatefi2023}. Bobot ROC untuk atribut pada peringkat ke-$i$ dari $n$ atribut dalam satu sub-algoritma dirumuskan sebagai:
 
@@ -1726,9 +1728,9 @@ Nilai $w(\text{minat}) = 0{,}611$ tidak berubah karena tidak terlibat \emph{tie}
     preferensi peran & 0,194 & Opsi tunggal: \emph{Leader/Coordinator}, \emph{Contributor/Executor}, \emph{Supporter/Facilitator} & Kesesuaian \emph{rule based} antara preferensi peran mahasiswa dan kebutuhan peran kegiatan \\
 \end{longtable}
 
-Bobot ROC pada Tabel~\ref{tab:atribut-bobot} dibulatkan ke tiga desimal untuk keterbacaan; nilai eksaknya berbentuk pecahan $\frac{3}{4}$ dan $\frac{1}{4}$ untuk Algoritma~1, serta $\frac{11}{18}$ dan dua kali $\frac{7}{36}$ untuk Algoritma~2, yang masing-masing menjumlah tepat satu secara matematis. Implementasi menggunakan representasi desimal tiga digit (0,611 + 0,194 + 0,194 = 0,999) sehingga terdapat defisit pembulatan ${\sim}0{,}1\%$ yang tidak berdampak signifikan pada peringkat hasil rekomendasi. Dengan metode ini, bobot internal tetap diturunkan langsung dari urutan dominasi pada data survei (bukan keputusan desain yang ditetapkan secara sewenang-wenang), sekaligus tidak mengklaim ketelitian yang tidak didukung oleh sifat data \emph{multi-select}, karena hanya informasi ordinal (urutan) yang diekstraksi dari survei, bukan magnitudo persentasenya.
+Bobot ROC pada Tabel~\ref{tab:atribut-bobot} dibulatkan ke tiga desimal untuk keterbacaan; nilai eksaknya berbentuk pecahan $\frac{3}{4}$ dan $\frac{1}{4}$ untuk Algoritma~1, serta $\frac{11}{18}$ dan dua kali $\frac{7}{36}$ untuk Algoritma~2 yang masing-masing menjumlah tepat satu secara matematis. Implementasi menggunakan representasi desimal tiga digit (0,611 + 0,194 + 0,194 = 0,999) sehingga terdapat defisit pembulatan ${\sim}0{,}1\%$ yang tidak berdampak signifikan pada peringkat hasil rekomendasi. Dengan metode ini, bobot internal tetap diturunkan langsung dari urutan dominasi pada data survei (bukan keputusan desain yang ditetapkan secara sewenang-wenang), sekaligus tidak mengklaim ketelitian yang tidak didukung oleh sifat data \emph{multi-select}, karena hanya informasi ordinal (urutan) yang diekstraksi dari survei, bukan magnitudo persentasenya.
 
-Kombinasi antara Algoritma~1 dan Algoritma~2 ditetapkan dengan bobot setara (50\%:50\%). Keputusan desain ini memperlakukan kedua jenis \emph{person-environment fit} secara seimbang. Perlu ditegaskan bahwa rasio 50:50 ini merupakan simplifikasi pragmatis untuk mengelola kompleksitas rancangan dalam lingkup Tugas Akhir, bukan derivasi langsung dari kerangka \emph{person-job fit} yang mendasarinya \autocite{langgeng2021}, karena kerangka tersebut secara konseptual tidak menetapkan rasio baku antara \emph{Demands-Abilities Fit} dan \emph{Needs-Supplies Fit}.
+Kombinasi antara Algoritma~1 dan Algoritma~2 ditetapkan dengan bobot setara (50\%:50\%). Keputusan desain ini memperlakukan kedua jenis \emph{person environment fit} secara seimbang. Perlu ditegaskan bahwa rasio 50:50 ini merupakan simplifikasi pragmatis untuk mengelola kompleksitas rancangan dalam lingkup Tugas Akhir, bukan derivasi langsung dari kerangka \emph{person job fit} yang mendasarinya \autocite{langgeng2021}, karena kerangka tersebut secara konseptual tidak menetapkan rasio baku antara \emph{Demands-Abilities Fit} dan \emph{Needs-Supplies Fit}.
 
 Atribut ketersediaan waktu tidak muncul pada Tabel~\ref{tab:atribut-bobot} karena diperlakukan sebagai kendala keras pada tahap penyaringan (subbab IV.3.1), bukan sebagai komponen berbobot pada tahap pembobotan. Gambaran konkret bagaimana setiap atribut tersebut diperoleh dari pengguna disajikan pada Tabel~\ref{tab:instrumen-profil}.
 
@@ -1762,14 +1764,14 @@ Atribut ketersediaan waktu tidak muncul pada Tabel~\ref{tab:atribut-bobot} karen
     Ketersediaan waktu & ``Kapan waktu yang biasanya kamu gunakan untuk berkolaborasi?'' & Pilih beberapa dari daftar slot waktu (\emph{multi-select}), contoh: Senin-Malam, Rabu-Sore, Sabtu-Pagi \\
 \end{longtable}
 
-Pemilihan atribut-atribut pada Tabel~\ref{tab:instrumen-profil} berlandaskan pada kerangka teoritis \emph{person-job fit} dan \emph{person-group fit} \autocite{kristofbrown2005}. Atribut \emph{skill} dan pengalaman merepresentasikan dimensi \emph{Demands-Abilities Fit}, yaitu kesesuaian antara kemampuan mahasiswa dan tuntutan kegiatan. Atribut minat merepresentasikan dimensi \emph{Needs-Supplies Fit}, yaitu sejauh mana kegiatan memenuhi preferensi dan kebutuhan mahasiswa. Atribut gaya kerja berlandaskan pada dimensi \emph{person-group fit} dari kerangka yang sama, yang menunjukkan bahwa kesesuaian gaya dan ritme kerja antaranggota tim berkontribusi pada kohesi dan kinerja tim. Pembagian biner menjadi Terstruktur dan Fleksibel diadaptasi dari spektrum \emph{Adaption-Innovation} yang dikembangkan oleh Kirton \autocite{stum2009}, yang membedakan individu yang cenderung menyukai kerangka kerja terstruktur dengan pembagian tugas yang jelas (\emph{Adaptor}) dari yang lebih nyaman dengan pendekatan terbuka dan penyesuaian situasional (\emph{Innovator}). Atribut preferensi peran diturunkan dari taksonomi peran fungsional Benne dan Sheats yang mengklasifikasikan peran anggota kelompok ke dalam tiga kelompok besar: \emph{task roles} (pelaksana tugas), \emph{building and maintenance roles} (pemelihara kelompok), dan peran individual \autocite{burke2019}. Ketiga opsi pada atribut ini, yaitu \emph{Leader/Coordinator}, \emph{Contributor/Executor}, dan \emph{Supporter/Facilitator} merupakan adaptasi generik dari taksonomi tersebut yang disesuaikan dengan konteks kegiatan kolaboratif mahasiswa. Atribut ketersediaan waktu tidak dimasukkan sebagai komponen berbobot, melainkan sebagai kendala keras sebagaimana diuraikan pada subbab IV.3.1.
+Pemilihan atribut-atribut pada Tabel~\ref{tab:instrumen-profil} berlandaskan pada kerangka teoritis \emph{person job fit} dan \emph{person group fit} \autocite{kristofbrown2005}. Atribut \emph{skill} dan pengalaman merepresentasikan dimensi \emph{Demands-Abilities Fit}, yaitu kesesuaian antara kemampuan mahasiswa dan tuntutan kegiatan. Atribut minat merepresentasikan dimensi \emph{Needs-Supplies Fit}, yaitu sejauh mana kegiatan memenuhi preferensi dan kebutuhan mahasiswa. Atribut gaya kerja berlandaskan pada dimensi \emph{person group fit} dari kerangka yang sama yang menunjukkan bahwa kesesuaian gaya dan ritme kerja antaranggota tim berkontribusi pada kohesi dan kinerja tim. Pembagian biner menjadi Terstruktur dan Fleksibel diadaptasi dari spektrum \emph{Adaption-Innovation} yang dikembangkan oleh Kirton \autocite{stum2009} yang membedakan individu yang cenderung menyukai kerangka kerja terstruktur dengan pembagian tugas yang jelas (\emph{Adaptor}) dari yang lebih nyaman dengan pendekatan terbuka dan penyesuaian situasional (\emph{Innovator}). Atribut preferensi peran diturunkan dari taksonomi peran fungsional Benne dan Sheats yang mengklasifikasikan peran anggota kelompok ke dalam tiga kelompok besar: \emph{task roles} (pelaksana tugas), \emph{building and maintenance roles} (pemelihara kelompok), dan peran individual \autocite{burke2019}. Ketiga opsi pada atribut ini, yaitu \emph{Leader/Coordinator}, \emph{Contributor/Executor}, dan \emph{Supporter/Facilitator} merupakan adaptasi generik dari taksonomi tersebut yang disesuaikan dengan konteks kegiatan kolaboratif mahasiswa. Atribut ketersediaan waktu tidak dimasukkan sebagai komponen berbobot, melainkan sebagai kendala keras sebagaimana diuraikan pada subbab IV.3.1.
 
 % ==========================================
 \subsection{Perhitungan Skor Kecocokan per Atribut}
 
 \subsubsection*{a. Skor \emph{skill} (Algoritma 1)}
 
-Misalkan $K_p$ menyatakan himpunan \emph{skill} yang dibutuhkan kegiatan $p$, dan $K_s$ menyatakan himpunan \emph{skill} yang dimiliki mahasiswa $s$, keduanya berupa tag kategorikal hasil pilihan \emph{multi-select} pada instrumen (lihat Tabel~\ref{tab:instrumen-profil}), bukan skala bertingkat. Skor kecocokan \emph{skill} dirumuskan sebagai rasio cakupan (\emph{coverage}):
+Misalkan $K_p$ menyatakan himpunan \emph{skill} yang dibutuhkan kegiatan $p$, dan $K_s$ menyatakan himpunan \emph{skill} yang dimiliki mahasiswa $s$, keduanya berupa tag kategorikal hasil pilihan \emph{multi-select} pada instrumen (pada Tabel~\ref{tab:instrumen-profil}), bukan skala bertingkat. Skor kecocokan \emph{skill} dirumuskan sebagai rasio cakupan (\emph{coverage}):
 
 \begin{equation}
   \text{SkorSkill}(s,p) = \frac{|K_s \cap K_p|}{|K_p|}
@@ -1777,11 +1779,11 @@ Misalkan $K_p$ menyatakan himpunan \emph{skill} yang dibutuhkan kegiatan $p$, da
   \eqcaption{Skor kecocokan \emph{skill}}
 \end{equation}
 
-Formula ini merepresentasikan proporsi \emph{skill} yang dibutuhkan kegiatan yang berhasil dipenuhi oleh mahasiswa. Apabila $|K_p| = 0$ (kegiatan tidak menetapkan tuntutan \emph{skill}), implementasi mengembalikan \emph{SkorSkill} = 1 secara konvensional; kasus serupa berlaku untuk $|M_p| = 0$ pada \emph{SkorMinat}. Pendekatan \emph{coverage} dipilih agar konsisten dengan bentuk instrumen pada Tabel~\ref{tab:instrumen-profil}, yang menangkap \emph{skill} sebagai pilihan tag kategorikal (\emph{multi-select}), bukan penilaian level kemampuan bertingkat. Pendekatan ini tetap konsisten dengan logika \emph{Demands-Abilities Fit} \autocite{langgeng2021}. Semakin besar himpunan \emph{skill} yang dimiliki menutupi himpunan \emph{skill} yang dibutuhkan, semakin tinggi tingkat kecocokan. \emph{Skill} tambahan yang dimiliki mahasiswa di luar $K_p$ tidak mengurangi maupun menambah skor, karena hanya \emph{skill} yang relevan dengan kebutuhan kegiatan yang diperhitungkan.
+Formula ini merepresentasikan proporsi \emph{skill} yang dibutuhkan kegiatan yang berhasil dipenuhi oleh mahasiswa. Apabila $|K_p| = 0$ (kegiatan tidak menetapkan tuntutan \emph{skill}), implementasi mengembalikan \emph{SkorSkill} = 1 secara konvensional; kasus serupa berlaku untuk $|M_p| = 0$ pada \emph{SkorMinat}. Pendekatan \emph{coverage} dipilih agar konsisten dengan bentuk instrumen pada Tabel~\ref{tab:instrumen-profil} yang menangkap \emph{skill} sebagai pilihan tag kategorikal (\emph{multi-select}), bukan penilaian level kemampuan bertingkat. Pendekatan ini tetap konsisten dengan logika \emph{Demands-Abilities Fit} \autocite{langgeng2021}. Semakin besar himpunan \emph{skill} yang dimiliki menutupi himpunan \emph{skill} yang dibutuhkan, semakin tinggi tingkat kecocokan. \emph{Skill} tambahan yang dimiliki mahasiswa di luar $K_p$ tidak mengurangi maupun menambah skor, karena hanya \emph{skill} yang relevan dengan kebutuhan kegiatan yang diperhitungkan.
 
 \subsubsection*{b. Skor pengalaman (Algoritma 1)}
 
-Misalkan $\text{expLevel}_s$ menyatakan level pengalaman mahasiswa $s$ dan $\text{expReq}_p$ menyatakan level pengalaman yang dibutuhkan kegiatan $p$, keduanya pada skala ordinal 1--3 hasil pemetaan dari instrumen survei (Pemula$=1$, Menengah$=2$, Mahir$=3$; lihat Tabel~\ref{tab:instrumen-profil}). Skor kecocokan pengalaman dirumuskan sebagai jarak ternormalisasi:
+Misalkan $\text{expLevel}_s$ menyatakan level pengalaman mahasiswa $s$ dan $\text{expReq}_p$ menyatakan level pengalaman yang dibutuhkan kegiatan $p$, keduanya pada skala ordinal 1--3 hasil pemetaan dari instrumen survei (Pemula$=1$, Menengah$=2$, Mahir$=3$; pada Tabel~\ref{tab:instrumen-profil}). Skor kecocokan pengalaman dirumuskan sebagai jarak ternormalisasi (Persamaan~\ref{eq:skor-pengalaman}):
 
 \begin{equation}
   \text{SkorPengalaman}(s,p) = 1 - \frac{|\text{expLevel}_s - \text{expReq}_p|}{2}
@@ -1793,7 +1795,7 @@ Pembagi 2 merupakan jarak maksimum yang mungkin terjadi pada skala 1--3 sehingga
 
 \subsubsection*{c. Skor minat (Algoritma 2)}
 
-Misalkan $M_s$ menyatakan himpunan tag minat mahasiswa $s$ dan $M_p$ menyatakan himpunan tag minat yang relevan dengan kegiatan $p$. Skor kecocokan minat dirumuskan sebagai rasio cakupan (\emph{coverage}), serupa dengan pendekatan pada atribut \emph{skill} (lihat Persamaan~\ref{eq:skor-skill}):
+Misalkan $M_s$ menyatakan himpunan tag minat mahasiswa $s$ dan $M_p$ menyatakan himpunan tag minat yang relevan dengan kegiatan $p$. Skor kecocokan minat dirumuskan sebagai rasio cakupan (\emph{coverage}) pada Persamaan~\ref{eq:skor-minat}, serupa dengan pendekatan pada atribut \emph{skill} (pada Persamaan~\ref{eq:skor-skill}):
 
 \begin{equation}
   \text{SkorMinat}(s,p) = \frac{|M_s \cap M_p|}{|M_p|}
@@ -1805,7 +1807,7 @@ Formula ini merepresentasikan proporsi tag minat yang relevan dengan kegiatan ya
 
 \subsubsection*{d. Skor gaya kerja (Algoritma 2)}
 
-Atribut gaya kerja direpresentasikan sebagai \emph{field} biner (Terstruktur/Fleksibel) yang diadaptasi dari spektrum \emph{Adaption-Innovation} \autocite{stum2009}. Terstruktur merepresentasikan kecenderungan \emph{Adaptor} dan Fleksibel merepresentasikan kecenderungan \emph{Innovator}. Skor kecocokan dihitung melalui pencocokan eksak:
+Atribut gaya kerja direpresentasikan sebagai \emph{field} biner (Terstruktur/Fleksibel) yang diadaptasi dari spektrum \emph{Adaption-Innovation} \autocite{stum2009}. Terstruktur merepresentasikan kecenderungan \emph{Adaptor} dan Fleksibel merepresentasikan kecenderungan \emph{Innovator}. Skor kecocokan dihitung melalui pencocokan eksak (Persamaan~\ref{eq:skor-gaya-kerja}):
 
 \begin{equation}
   \text{SkorGayaKerja}(s,p) =
@@ -1831,12 +1833,12 @@ Skor preferensi peran dihitung secara \emph{rule based} \autocite{jackson1999,bu
   \eqcaption{Skor kecocokan preferensi peran}
 \end{equation}
 
-Skor ini bersifat biner karena setiap kegiatan kolaboratif selalu menetapkan kebutuhan peran spesifik sebagai bagian dari deskripsi kegiatannya. Implementasi aktual memuat cabang ketiga: apabila \texttt{rolesDibutuhkan} kosong, \emph{SkorPeran} dikembalikan sebagai 0,5 (netral); cabang ini berfungsi sebagai \emph{defensive fallback} dan dijamin tidak aktif dalam kondisi normal karena validasi pada UC09 mewajibkan minimal satu \emph{role} saat kegiatan dibuat. Baik $\text{preferensiPeran}_s$ maupun $\text{rolesDibutuhkan}_p$ menggunakan taksonomi peran generik yang sama, yaitu \emph{Leader/Coordinator}, \emph{Contributor/Executor}, dan \emph{Supporter/Facilitator} (lihat Tabel~\ref{tab:instrumen-profil}), bukan nama posisi teknis spesifik seperti ``\emph{Backend Developer}''. Penyamaan taksonomi ini diperlukan agar preferensi mahasiswa dan kebutuhan peran kegiatan dapat dibandingkan secara langsung pada Persamaan~\ref{eq:skor-peran}; kebutuhan teknis spesifik suatu kegiatan tetap tercakup melalui atribut \emph{skill} pada Algoritma~1, bukan melalui atribut preferensi peran.
+Skor ini bersifat biner karena setiap kegiatan kolaboratif selalu menetapkan kebutuhan peran spesifik sebagai bagian dari deskripsi kegiatannya. Implementasi aktual memuat cabang ketiga: apabila \texttt{rolesDibutuhkan} kosong, \emph{SkorPeran} dikembalikan sebagai 0,5 (netral); cabang ini berfungsi sebagai \emph{defensive fallback} dan dijamin tidak aktif dalam kondisi normal karena validasi pada UC09 mewajibkan minimal satu \emph{role} saat kegiatan dibuat. Baik $\text{preferensiPeran}_s$ maupun $\text{rolesDibutuhkan}_p$ menggunakan taksonomi peran generik yang sama, yaitu \emph{Leader/Coordinator}, \emph{Contributor/Executor}, dan \emph{Supporter/Facilitator} (pada Tabel~\ref{tab:instrumen-profil}), bukan nama posisi teknis spesifik seperti ``\emph{Backend Developer}''. Penyamaan taksonomi ini diperlukan agar preferensi mahasiswa dan kebutuhan peran kegiatan dapat dibandingkan secara langsung pada Persamaan~\ref{eq:skor-peran}; kebutuhan teknis spesifik suatu kegiatan tetap tercakup melalui atribut \emph{skill} pada Algoritma~1, bukan melalui atribut preferensi peran.
 
 % ==========================================
 \subsection{Perhitungan Skor Total dan Perangkingan}
 
-Skor sub-algoritma masing-masing dihitung melalui model penjumlahan berbobot (\emph{weighted sum}) atas skor atribut yang telah dirumuskan pada subbab IV.3.3:
+Skor sub-algoritma masing-masing dihitung melalui model penjumlahan berbobot (\emph{weighted sum}) atas skor atribut yang telah dirumuskan pada subbab IV.3.3, sebagaimana ditunjukkan pada Persamaan~\ref{eq:algo1} dan Persamaan~\ref{eq:algo2}:
 
 \begin{equation}
   \text{SkorAlgoritma1}(s,p) = 0{,}75 \times \text{SkorSkill}(s,p) + 0{,}25 \times \text{SkorPengalaman}(s,p)
@@ -1854,7 +1856,7 @@ Skor sub-algoritma masing-masing dihitung melalui model penjumlahan berbobot (\e
   \eqcaption{Skor Algoritma 2 (\emph{Needs-Supplies Fit})}
 \end{equation}
 
-Skor akhir \emph{AffinityScoreProject} diperoleh dari kombinasi setara antara kedua sub-algoritma:
+Skor akhir \emph{AffinityScoreProject} diperoleh dari kombinasi setara antara kedua sub-algoritma (Persamaan~\ref{eq:affinity-score}):
 
 \begin{equation}
   \text{AffinityScore}(s,p) = 0{,}5 \times \text{SkorAlgoritma1}(s,p) + 0{,}5 \times \text{SkorAlgoritma2}(s,p)

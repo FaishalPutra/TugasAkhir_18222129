@@ -8,7 +8,7 @@
 \section{Rincian \emph{Black-box Testing}}
 \label{sec:c-blackbox}
 
-Tabel berikut menyajikan rincian lengkap seluruh 20 skenario \emph{black-box testing} yang dilakukan pada modul \emph{People-to-Project}, mencakup skenario pengujian, ekspektasi keluaran, dan status hasil. Delapan belas skenario menghasilkan keluaran yang sesuai dengan ekspektasi yang telah ditetapkan, sementara dua skenario (TC15 dan TC16) berstatus Berhasil dengan Catatan.
+Tabel~\ref{tab:c1-blackbox} berikut menyajikan rincian lengkap seluruh 20 skenario \emph{black-box testing} yang dilakukan pada modul \emph{People-to-Project}, mencakup skenario pengujian, ekspektasi keluaran, dan status hasil. Delapan belas skenario menghasilkan keluaran yang sesuai dengan ekspektasi yang telah ditetapkan, sementara dua skenario (TC15 dan TC16) berstatus Berhasil dengan Catatan.
 
 \begin{longtable}{p{0.05\textwidth} p{0.17\textwidth} p{0.21\textwidth} p{0.27\textwidth} p{0.12\textwidth}}
 \caption{Rincian \emph{Black-box Testing}} \label{tab:c1-blackbox} \\
@@ -72,7 +72,7 @@ Catatan: TC15 dan TC16 berstatus Berhasil dengan Catatan karena fungsionalitas i
 \section{Rincian Evaluasi Algoritma \emph{AffinityEngine}}
 \label{sec:c-evaluasi-algo}
 
-Tabel berikut menyajikan rincian lengkap seluruh 14 skenario evaluasi algoritma \emph{AffinityEngine}, mencakup komponen yang diuji, skenario pengujian, dan ekspektasi nilai keluaran berdasarkan rumus yang dirancang pada Bab IV. Seluruh skenario diverifikasi dengan membandingkan hasil perhitungan manual terhadap hasil sistem, dan seluruhnya menghasilkan nilai yang sesuai.
+Tabel~\ref{tab:c2-algo} berikut menyajikan rincian lengkap seluruh 14 skenario evaluasi algoritma \emph{AffinityEngine}, mencakup komponen yang diuji, skenario pengujian, dan ekspektasi nilai keluaran berdasarkan rumus yang dirancang pada Bab IV. Seluruh skenario diverifikasi dengan membandingkan hasil perhitungan manual terhadap hasil sistem, dan seluruhnya menghasilkan nilai yang sesuai.
 
 \begin{longtable}{p{0.05\textwidth} p{0.15\textwidth} p{0.23\textwidth} p{0.31\textwidth} p{0.08\textwidth}}
 \caption{Rincian Evaluasi Algoritma \emph{AffinityEngine}} \label{tab:c2-algo} \\
@@ -211,6 +211,8 @@ Subbab ini menyajikan visualisasi distribusi jawaban responden untuk seluruh but
 \subsection{Distribusi Jawaban UAT Modul \emph{People-to-Project}}
 \label{subsec:c-visual-uat}
 
+Gambar~\ref{fig:c-uat1} hingga Gambar~\ref{fig:c-uat8} menyajikan distribusi jawaban responden untuk delapan aspek UAT modul \emph{People-to-Project}.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.85\textwidth]{images/UAT/UAT1}
@@ -269,6 +271,8 @@ Subbab ini menyajikan visualisasi distribusi jawaban responden untuk seluruh but
 
 \subsection{Distribusi Jawaban SUS}
 \label{subsec:c-visual-sus}
+
+Gambar~\ref{fig:c-sus1} hingga Gambar~\ref{fig:c-sus10} menyajikan distribusi jawaban responden untuk sepuluh butir SUS.
 
 \begin{figure}[H]
   \centering
@@ -370,7 +374,7 @@ UAT dan SUS dilaksanakan secara tatap muka maupun daring dengan melibatkan sepul
     \midrule
     9 & Responden 9 & Institut Teknologi Bandung & Gambar~\ref{fig:c-dok7} \\
     \midrule
-    10 & Responden 10 & Institut Teknologi Bandung & \textit{(menyusul)} \\
+    10 & Responden 10 & Institut Teknologi Bandung & Gambar~\ref{fig:c-dok8} \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -422,4 +426,11 @@ UAT dan SUS dilaksanakan secara tatap muka maupun daring dengan melibatkan sepul
   \includegraphics[width=0.85\textwidth]{images/Responden/R89}
   \caption{Dokumentasi Sesi Pengujian bersama Responden 8 dan Responden 9}
   \label{fig:c-dok7}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{images/Responden/R10}
+  \caption{Dokumentasi Sesi Pengujian bersama Responden 10}
+  \label{fig:c-dok8}
 \end{figure}

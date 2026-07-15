@@ -56,7 +56,7 @@ Catatan: penyaringan kendala keras (Tahap 0) merupakan mekanisme terpisah dari p
 \section{Implementasi Perhitungan Skor Atribut}
 \label{sec:b-implementasi-skor}
 
-Perhitungan skor membedakan dua sub-algoritma: Algoritma 1 (\emph{Demands-Abilities Fit}) mencakup atribut \emph{skill} dan pengalaman, sedangkan Algoritma 2 (\emph{Needs-Supplies Fit}) mencakup minat, gaya kerja, dan preferensi peran. Listing~\ref{lst:b1-skor-skill}--\ref{lst:b8-breakdown} menyajikan \emph{pseudocode} seluruh fungsi implementasi secara berurutan sesuai alur pada Tabel~\ref{tab:b1-alur}.
+Perhitungan skor membedakan dua sub-algoritma: Algoritma 1 (\emph{Demands-Abilities Fit}) mencakup atribut \emph{skill} dan pengalaman, sedangkan Algoritma 2 (\emph{Needs-Supplies Fit}) mencakup minat, gaya kerja, dan preferensi peran. Listing~\ref{lst:b1-skor-skill}--\ref{lst:b8-breakdown} menyajikan \emph{pseudocode} seluruh fungsi implementasi secara berurutan sesuai alur pada Tabel~\ref{tab:b1-alur}: Listing~\ref{lst:b2-skor-pengalaman} (skor pengalaman), Listing~\ref{lst:b3-skor-algo1} (Algoritma 1), Listing~\ref{lst:b4-skor-minat-gk-peran} (skor minat, gaya kerja, dan peran), Listing~\ref{lst:b5-skor-algo2} (Algoritma 2), Listing~\ref{lst:b6-affinity-score} (skor \emph{affinity} akhir), dan Listing~\ref{lst:b7-gating} (penyaringan dan penentuan \emph{badge}).
 
 \begin{minipage}{\textwidth}
 \begin{lstlisting}[caption={{SkorSkill(profil, project)}}, label={lst:b1-skor-skill}, frame=single, captionpos=t, language=]
@@ -257,7 +257,7 @@ End Function
 \section{Contoh Penelusuran Perhitungan Skor}
 \label{sec:b-contoh-penelusuran}
 
-Bagian ini menyajikan satu contoh penelusuran implementasi untuk menunjukkan bagaimana nilai tiap atribut menghasilkan AffinityScore akhir. Contoh ini bersifat ilustratif dan digunakan untuk memperjelas alur implementasi, bukan sebagai hasil evaluasi akhir sistem.
+Bagian ini menyajikan satu contoh penelusuran implementasi untuk menunjukkan bagaimana nilai tiap atribut menghasilkan AffinityScore akhir, dengan data masukan pada Tabel~\ref{tab:b-contoh-input} dan hasil perhitungannya pada Tabel~\ref{tab:b-contoh-skor}. Contoh ini bersifat ilustratif dan digunakan untuk memperjelas alur implementasi, bukan sebagai hasil evaluasi akhir sistem.
 
 \begin{longtable}{p{0.20\textwidth} p{0.33\textwidth} p{0.33\textwidth}}
 \caption{Contoh Data Masukan Profil Mahasiswa dan Kebutuhan Kegiatan} \label{tab:b-contoh-input} \\
@@ -285,7 +285,7 @@ Pengalaman           & 2 (Menengah)                       & 2 (Menengah) \\
 \midrule
 Ketersediaan waktu   & Senin malam, Rabu sore             & Senin malam, Sabtu pagi \\
 \midrule
-Preferensi peran     & Developer                          & Developer, Designer \\
+Preferensi peran     & \emph{Contributor/Executor}        & \emph{Leader/Coordinator}, \emph{Contributor/Executor} \\
 \end{longtable}
 
 Sebelum skor dihitung, fungsi \texttt{IsEligible} memeriksa ketersediaan waktu: mahasiswa tersedia Senin malam dan Rabu sore, sedangkan kegiatan membutuhkan Senin malam atau Sabtu pagi. Karena terdapat irisan (Senin malam), mahasiswa dinyatakan \emph{eligible} dan perhitungan skor dilanjutkan.
@@ -326,4 +326,4 @@ Preferensi peran                       & 1{,}000          & 0{,}194 & 0{,}194 \\
 \textbf{AffinityScore Total}           & {--}             & {--}    & \textbf{0{,}898} \\
 \end{longtable}
 
-Kolom Kontribusi pada baris atribut menunjukkan hasil Skor × Bobot internal atribut tersebut di dalam sub-algoritmanya. Jumlah kontribusi atribut dalam satu sub-algoritma menghasilkan SkorAlgoritma ($0{,}750 + 0{,}250 = 1{,}000$ untuk Algoritma 1; $0{,}408 + 0{,}194 + 0{,}194 = 0{,}796$ untuk Algoritma 2). Baris \textit{× bobot ke AffinityScore} menampilkan perkalian bobot setara 0,5 dari masing-masing SkorAlgoritma ke AffinityScore akhir (kombinasi 50:50 antara kedua algoritma). Pada contoh ini, \emph{skill} mahasiswa mencakup seluruh kebutuhan kegiatan sehingga skor \emph{coverage} bernilai penuh, minat hanya mencakup dua dari tiga tag kegiatan sehingga skornya $2/3 \approx 0{,}667$, sedangkan gaya kerja dan preferensi peran seluruhnya cocok. AffinityScore sebesar 0,898 (89,8\%) melampaui ambang batas 30\% dan masuk kategori \emph{badge} \texttt{"hijau"} ($\geq$ 85\%).
+Kolom Kontribusi pada baris atribut menunjukkan hasil Skor × Bobot internal atribut tersebut di dalam sub-algoritmanya. Jumlah kontribusi atribut dalam satu sub-algoritma menghasilkan SkorAlgoritma ($0{,}750 + 0{,}250 = 1{,}000$ untuk Algoritma 1; $0{,}408 + 0{,}194 + 0{,}194 = 0{,}796$ untuk Algoritma 2). Baris \textit{× bobot ke AffinityScore} menampilkan perkalian bobot setara 0,5 dari masing-masing SkorAlgoritma ke AffinityScore akhir (kombinasi 50:50 antara kedua algoritma). Pada contoh ini, \emph{skill} mahasiswa mencakup seluruh kebutuhan kegiatan sehingga skor \emph{coverage} bernilai penuh, minat hanya mencakup dua dari tiga tag kegiatan sehingga skornya $2/3 \approx 0{,}667$, gaya kerja cocok penuh, dan preferensi peran \emph{Contributor/Executor} ditemukan dalam himpunan peran yang dibutuhkan kegiatan (\emph{Leader/Coordinator}, \emph{Contributor/Executor}) sehingga SkorPeran = 1{,}000. AffinityScore sebesar 0,898 (89,8\%) melampaui ambang batas 30\% dan masuk kategori \emph{badge} \texttt{"hijau"} ($\geq$ 85\%).
